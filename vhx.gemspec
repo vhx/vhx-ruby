@@ -21,5 +21,4 @@ Gem::Specification.new do |spec|
   # Gems that must be intalled
   spec.add_dependency "faraday"
   spec.add_dependency "multi_json"
-  spec.add_dependency "oauth2"
 end
