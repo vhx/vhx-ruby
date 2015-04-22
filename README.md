@@ -50,23 +50,28 @@ expires_at    = token.expires_at
 Now that you have either an api key or access_token you are ready to make your first request!
 
 ```ruby
-user_credentials = {
-  access_token:  token,
-  refresh_token: refresh,
-  expires_at:    expires_at
+credentials = {
+  oauth_token: {
+    access_token:  token,
+    refresh_token: refresh,
+    expires_at:    expires_at
+  }
 }
 ```
 
 OR
 
 ```ruby
-user_credentials = {
-  api_key:      api_key
+credentials = {
+  api_key: api_key
 }
 ```
 
 Instantiate the VHX Client:
 
 ```ruby
-vhx = Vhx::Client.new(user_credentials)
+vhx = Vhx::Client.new(client_id, client_secret, credentials)
 ```
+
+
+

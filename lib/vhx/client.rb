@@ -1,110 +1,63 @@
-require 'faraday'
-require 'multi_json'
-require 'json'
-require 'oauth2'
-
 module Vhx
 
   class Client
-    attr_accessor :access_token
+    attr_reader :client_id, :client_secret, :api_base_url, :oauth_token, :api_key
 
-    BASE_URI = 'http://api.crystal.dev/'
-    AUTHORIZE_URL = 'http://crystal.dev/oauth/authorize'
-    TOKEN_URL     = 'http://crystal.dev/oauth/token'
-    FIVE_MINUTES  = 300
+    def initialize(client_id, client_secret, options = {})
+      @api_base_url  = 'http://api.crystal.dev'
+      @client_id     = options[:client_id]
+      @client_secret = options[:client_secret]
+      @oauth_token   = OAuthToken.new(options[:oauth_token])
+      @api_key       = options[:api_key]
+      @headers       = {}
 
-    # Example of user_credentials
-    # user_credentials = {
-    #     :access_token => 'access_token',
-    #     :refresh_token => 'refresh_token',
-    #     :expires_at => Time.now + 1.day
-    # }
-
-    def initialize(client_id, client_secret, user_credentials, options={})
-      client_opts = {
-        :site          => options[:base_uri] || BASE_URI,
-        :authorize_url => options[:authorize_url] || AUTHORIZE_URL,
-        :token_url     => options[:token_url] || TOKEN_URL
-
-        # In prod would also include ssl certs
-        # :ssl           => {
-        #                     :verify => true,
-        #                     :cert_store => ::Coinbase::Client.whitelisted_cert_store
-        #                   }
-
-      }
-
-      @oauth_client = OAuth2::Client.new(client_id, client_secret, client_opts)
-
-      token_hash = user_credentials.dup
-      token_hash[:access_token] ||= token_hash[:token]
-      access_token = token_hash[:access_token]
-
-      # # Fudge expiry to avoid race conditions
-      # token_hash[:expires_in] = token_hash[:expires_in].to_i - FIVE_MINUTES if token_hash[:expires_in]
-      # token_hash[:expires_at] = token_hash[:expires_at].to_i - FIVE_MINUTES if token_hash[:expires_at]
-
-      token_hash.delete :expires
-      raise "No access token provided" unless token_hash[:access_token]
-      @oauth_token = OAuth2::AccessToken.from_hash(@oauth_client, token_hash)
+      configure_connection
     end
 
-    def refresh!
-      raise "Access token not initialized." unless @oauth_token
-      @oauth_token = @oauth_token.refresh!
-    end
+    def configure_connection
+      @conn = Faraday::Connection.new(url: api_base_url, headers: configured_headers) do |faraday|
+        faraday.request :url_encoded
+        faraday.request :json
+        faraday.response :json
+        faraday.response :logger
 
-    def oauth_token
-      raise "Access token not initialized." unless @oauth_token
-      refresh! if @oauth_token.expired?
-      @oauth_token
-    end
-
-    def credentials
-      @oauth_token.to_hash
-    end
-
-    def packages_on_sale
-      unless @packages
-        me = get('/me')
-
-        @packages = []
-
-        if me['_embedded']['sites'][0]
-          me['_embedded']['sites'].each do |s|
-            site      = get(s['_links']['self']['href'])
-            @packages = @packages + site['_embedded']['packages']
-          end
-        end
+        faraday.adapter Faraday.default_adapter
       end
 
-      return @packages || []
+      @conn
     end
 
-    def create_ticket(payload)
-      @ticket = post('/tickets', payload)
-    end
-
-    def get(url, options = {})
-      request :get, url, options
-    end
-
-    def post(url, options = {})
-      request :post, url, options
-    end
-
-    def request(method, path, data, options={})
-      @last_response = response = connection.send(method, URI.encode(path.to_s), data, options)
-      JSON.parse(response.body)
-    end
-
-    def connection
-      @connection ||= Faraday.new(url: 'http://api.crystal.dev') do |conn|
-        conn.request :url_encoded
-        conn.adapter Faraday.default_adapter
-        conn.headers[:Authorization]  = "Bearer #{@oauth_token.token}"
+    def configured_headers
+      if access_token
+        @headers[:Authorization] = "Bearer #{access_token}"
+      elsif api_key
+        @headers[:Authorization] = Faraday::Request::BasicAuthentication.header(api_key, '')
       end
-      @connection
+
+      @headers
+    end
+
+    def access_token
+      oauth_token.access_token
+    end
+
+    def refresh_access_token
+      conn = @connection.dup
+      conn.headers.delete(:Authorization)
+      response = conn.post do |req|
+        req.url '/oauth/token'
+        req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+        req.body = {
+          grant_type:    'refresh_token',
+          refresh_token: oauth_token.refresh_token,
+          client_id:     client_id,
+          client_secret: client_secret
+        }
+      end
+
+      @oauth_token = OAuthToken.new(response.body)
+
+      configure_connection
     end
 
   end
