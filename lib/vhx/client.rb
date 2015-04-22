@@ -1,21 +1,21 @@
 module Vhx
 
   class Client
-    attr_reader :client_id, :client_secret, :api_base_url, :oauth_token, :api_key
+    attr_reader :client_id, :client_secret, :api_base_url, :oauth_token, :api_key, :connection
 
-    def initialize(client_id, client_secret, options = {})
+    def initialize(credentials = {})
       @api_base_url  = 'http://api.crystal.dev'
-      @client_id     = options[:client_id]
-      @client_secret = options[:client_secret]
-      @oauth_token   = OAuthToken.new(options[:oauth_token])
-      @api_key       = options[:api_key]
+      @client_id     = credentials[:client_id]
+      @client_secret = credentials[:client_secret]
+      @oauth_token   = credentials[:oauth_token] ? OAuthToken.new(credentials[:oauth_token]) : nil
+      @api_key       = credentials[:api_key]
       @headers       = {}
 
       configure_connection
     end
 
     def configure_connection
-      @conn = Faraday::Connection.new(url: api_base_url, headers: configured_headers) do |faraday|
+      @connection = Faraday::Connection.new(url: api_base_url, headers: configured_headers) do |faraday|
         faraday.request :url_encoded
         faraday.request :json
         faraday.response :json
@@ -24,7 +24,7 @@ module Vhx
         faraday.adapter Faraday.default_adapter
       end
 
-      @conn
+      @connection
     end
 
     def configured_headers
@@ -38,6 +38,10 @@ module Vhx
     end
 
     def access_token
+      unless oauth_token
+        return nil
+      end
+
       oauth_token.access_token
     end
 

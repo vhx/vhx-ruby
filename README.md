@@ -51,10 +51,12 @@ Now that you have either an api key or access_token you are ready to make your f
 
 ```ruby
 credentials = {
+  client_id: client_id,
+  client_secret: client_secret,
   oauth_token: {
-    access_token:  token,
+    access_token: token,
     refresh_token: refresh,
-    expires_at:    expires_at
+    expires_at: expires_at
   }
 }
 ```
@@ -70,7 +72,7 @@ credentials = {
 Instantiate the VHX Client:
 
 ```ruby
-vhx = Vhx::Client.new(client_id, client_secret, credentials)
+vhx = Vhx.setup(credentials)
 ```
 
 
