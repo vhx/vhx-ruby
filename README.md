@@ -105,3 +105,5 @@ user.sites
 ```
 
 These association calls will default to fetching from embedded resources attached to the calling object. If the requested resources are not available, the gem will proceed to make a call to the Vhx Api to fetch those resources. Once resources are pulled the first time, they are cached; so all future calls to your object's association will not make additional requests.
+
+You can also request individual or a collection of objects using the `find` and `all` methods, respectively, which are available to all resources.

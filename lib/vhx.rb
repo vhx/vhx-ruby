@@ -10,11 +10,16 @@ require "vhx/oauth_token"
 
 require "vhx/client"
 
-require "vhx/objects/vhx_object"
+require "vhx/utilities/api_operations"
+require "vhx/utilities/vhx_object"
+
 require "vhx/objects/user"
 require "vhx/objects/package"
 require "vhx/objects/site"
 require "vhx/objects/follower"
+require "vhx/objects/file"
+require "vhx/objects/ticket"
+require "vhx/objects/video"
 
 module Vhx
   class << self
