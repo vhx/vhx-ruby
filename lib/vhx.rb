@@ -12,6 +12,8 @@ require "vhx/client"
 
 require "vhx/objects/vhx_object"
 require "vhx/objects/user"
+require "vhx/objects/package"
+require "vhx/objects/site"
 
 module Vhx
   class << self

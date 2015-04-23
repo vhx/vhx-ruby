@@ -95,3 +95,11 @@ user.packages_count
 user.name
 ->"John Smith"
 ```
+
+You can also retrieve associations such as the following:
+
+```ruby
+user.sites
+
+->[#<Vhx::Site:0x007fd0329921b8 @obj_hash={"_links"=>{"self"=>{"href"=>"http://api.vhx.tv/sites/10149"}, "home_page"=>{"href"=>"http://test.vhx.tv"}, "followers"=>{"href"=>"http://api.vhx.tv/sites/10149/followers"}}, "id"=>10149, "title"=>"test", "description"=>"", "domain"=>"test.vhx.tv", "subdomain"=>"test", "key"=>"test", "color"=>"#22B9B0", "facebook_url"=>nil, "twitter_name"=>nil, "google_analytics_id"=>"", "packages_count"=>0, "videos_count"=>0, "followers_count"=>0, "created_at"=>"2015-02-25T20:14:51Z", "updated_at"=>"2015-02-25T20:15:54Z"}, @id=10149, @title="test", @description="", @domain="test.vhx.tv", @subdomain="test", @key="test", @color="#22B9B0", @facebook_url=nil, @twitter_name=nil, @google_analytics_id="", @packages_count=0, @videos_count=0, @followers_count=0, @created_at="2015-02-25T20:14:51Z", @updated_at="2015-02-25T20:15:54Z">]
+```
