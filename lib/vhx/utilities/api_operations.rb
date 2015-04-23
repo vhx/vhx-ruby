@@ -10,5 +10,14 @@ module Vhx
       response_json.map{ |obj| self.new(obj) }
     end
 
+    def create(options)
+      response = Vhx.connection.post do |req|
+        req.url("/" + self.to_s.split("::").last.downcase.pluralize) #This url is based purely on VHX's API convention.
+        req.body =  options
+      end
+
+      self.new(response.body)
+    end
+
   end
 end

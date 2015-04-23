@@ -106,4 +106,20 @@ user.sites
 
 These association calls will default to fetching from embedded resources attached to the calling object. If the requested resources are not available, the gem will proceed to make a call to the Vhx Api to fetch those resources. Once resources are pulled the first time, they are cached; so all future calls to your object's association will not make additional requests.
 
-You can also request individual or a collection of objects using the `find` and `all` methods, respectively, which are available to all resources.
+You can also request individual or a collection of objects using the `#find` and `#all` methods, respectively, which are available to all resources.
+
+Create Vhx Objects using the Vhx-Ruby Gem by using the `#create` method on any resources that allow `POST` requests. For example, here's creating a package to sell for your site:
+
+```ruby
+options = {
+  title: "My New Package",
+  description: "My package description.",
+  price_cents: 500,
+  custom_email_message: "Thank you for buying my movie!",
+  is_preorder: true,
+  site:"https://api.vhx.tv/sites/1"
+}
+
+Vhx::Package.create(options)
+-> #<Vhx::Package:0x007f92c44825e8 @obj_hash={"_links"=>{"self"=>{"href"=>"http://api.crystal.dev/packages/6799"}, "site"=>{"href"=>"http://api.crystal.dev/sites/1900"}, "videos"=>{"href"=>"http://api.crystal.dev/packages/6799/videos"}, "buy_page"=>{"href"=>"http://sagartestmovie.crystal.dev/buy/my-new-package-2"}, "home_page"=>{"href"=>"http://sagartestmovie.crystal.dev/packages/my-new-package-2"}}, "_embedded"=>{"site"=>{"_links"=>{"self"=>{"href"=>"http://api.crystal.dev/sites/1900"}, "home_page"=>{"href"=>"http://sagartestmovie.crystal.dev"}, "followers"=>{"href"=>"http://api.crystal.dev/sites/1900/followers"}}, "id"=>1900, "title"=>"SagarTestMovie", "description"=>"This is my test movie. ", "domain"=>"sagartestmovie.crystal.dev", "subdomain"=>"sagartestmovie", "key"=>"sagartestmovie", "color"=>"#28DBF7", "facebook_url"=>nil, "twitter_name"=>nil, "google_analytics_id"=>"", "packages_count"=>8, "videos_count"=>3, "followers_count"=>35, "created_at"=>"2013-12-27T00:20:28Z", "updated_at"=>"2015-04-23T22:07:56Z"}, "videos"=>[], "trailer"=>nil}, "id"=>6799, "title"=>"My New Package", "description"=>"My package description.", "sku"=>"my-new-package-2", "price"=>{"cents"=>500, "currency"=>"USD", "formatted"=>"$5", "US"=>{"cents"=>500, "currency"=>"USD", "formatted"=>"$5"}}, "rental"=>nil, "trailer_url"=>nil, "trailer_embed_code"=>"<iframe src=\"http://embed.crystal.dev/packages/6799\" width=\"640\" height=\"360\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>", "thumbnail"=>{"small"=>"http://cdn.crystal.dev/assets/thumbnails/default-small.png", "medium"=>"http://cdn.crystal.dev/assets/thumbnails/default-medium.png", "large"=>"http://cdn.crystal.dev/assets/thumbnails/default-large.png", "blurred"=>nil}, "is_active"=>true, "is_locked"=>false, "is_preorder"=>true, "release_date"=>nil, "videos_count"=>0, "extras_count"=>0, "created_at"=>"2015-04-23T22:07:56Z", "updated_at"=>"2015-04-23T22:07:56Z"}, @id=6799, @title="My New Package", @description="My package description.", @sku="my-new-package-2", @price={"cents"=>500, "currency"=>"USD", "formatted"=>"$5", "US"=>{"cents"=>500, "currency"=>"USD", "formatted"=>"$5"}}, @rental=nil, @trailer_url=nil, @trailer_embed_code="<iframe src=\"http://embed.crystal.dev/packages/6799\" width=\"640\" height=\"360\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>", @thumbnail={"small"=>"http://cdn.crystal.dev/assets/thumbnails/default-small.png", "medium"=>"http://cdn.crystal.dev/assets/thumbnails/default-medium.png", "large"=>"http://cdn.crystal.dev/assets/thumbnails/default-large.png", "blurred"=>nil}, @is_active=true, @is_locked=false, @is_preorder=true, @release_date=nil, @videos_count=0, @extras_count=0, @created_at="2015-04-23T22:07:56Z", @updated_at="2015-04-23T22:07:56Z", @self=nil, @site=nil, @videos=nil, @buy_page=nil, @home_page=nil, @packages=nil, @sites=nil>
+```
