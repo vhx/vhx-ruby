@@ -75,5 +75,23 @@ Instantiate the VHX Client:
 vhx = Vhx.setup(credentials)
 ```
 
+Once your VHX Client is instantiated, you can make your first call:
 
+```ruby
+Vhx::User.me
+```
 
+Which will return an object like this:
+```ruby
+#<Vhx::User:0x007fcb5d10c130 @id=179232, @name="John Smith", @has_password=true, @thumbnail={"small"=>"https://secure.gravatar.com/avatar/b883c9efcd8ed81c7934586sca6a6a9.png?d=https://cdn.vhx.tv/assets/thumbnails/default-portrait-small.png&r=PG&s=100", "medium"=>"https://secure.gravatar.com/avatar/b883c9efcd8ed81c7934586sca6a6a9.png?d=https://cdn.vhx.tv/assets/thumbnails/default-portrait-medium.png&r=PG&s=200", "large"=>"https://secure.gravatar.com/avatar/b883c9efcd8ed81c7934586sca6a6a9.png?d=https://cdn.vhx.tv/assets/thumbnails/default-portrait-large.png&r=PG&s=300"}, @packages_count=13, @sites_count=1, @created_at="2013-08-19T19:27:30Z", @updated_at="2015-04-20T20:43:10Z">
+```
+
+You can call methods on this object to access it's attributes:
+
+```ruby
+user.packages_count
+->13
+
+user.name
+->"John Smith"
+```

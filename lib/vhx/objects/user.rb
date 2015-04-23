@@ -1,7 +1,8 @@
 module Vhx
-  class User
+  class User < VhxObject
     def self.me
-      Vhx.connection.get('/me')
+      response = Vhx.connection.get('/me').body
+      self.new(response)
     end
   end
 end

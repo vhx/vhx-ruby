@@ -10,6 +10,7 @@ require "vhx/oauth_token"
 
 require "vhx/client"
 
+require "vhx/objects/vhx_object"
 require "vhx/objects/user"
 
 module Vhx
