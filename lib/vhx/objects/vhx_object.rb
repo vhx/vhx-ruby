@@ -23,37 +23,45 @@ module Vhx
       ['packages', 'sites'].each do |association_class|
         self.class.send(:define_method, association_class) do
 
-          if obj_hash['_embedded'] && obj_hash['_embedded'][association_class].length > 0
-            return build_embedded_association(obj_hash, association_class)
+          if obj_hash['_embedded'] && obj_hash['_embedded'].fetch(association_class, []).length > 0
+            return fetch_embedded_association(obj_hash, association_class)
           end
 
-          fetch_linked_association(obj_hash)
+          if obj_hash['_links'] && obj_hash['_links'].fetch(association_class, []).length > 0
+            return fetch_linked_association(obj_hash, association_class)
+          end
+
+          puts "Association does not exist"
         end
       end
     end
 
-    def build_embedded_association(obj_hash, association_class)
+    def fetch_embedded_association(obj_hash, association_class)
       association_obj = obj_hash['_embedded'][association_class]
+      build_association(association_obj, association_class)
+    end
 
+    def fetch_linked_association(obj_hash, association_class)
+      hypermedia = obj_hash['_links'][association_class]['href']
+      response_json = Vhx.connection.get(hypermedia).body
+      build_association(response_json, association_class)
+    end
+
+    def build_association(association_obj, association_class)
       case association_obj.class.to_s
       when 'Array'
-        build_embedded_collection(association_obj, association_class)
+        build_collection(association_obj, association_class)
       when 'Hash'
-        build_embedded_object(association_obj, association_class)
+        build_object(association_obj, association_class)
       end
     end
 
-    def build_embedded_collection(association_collection, association_class)
-      association_collection.map{|association_hash| build_embedded_object(association_hash, association_class)}
+    def build_collection(association_collection, association_class)
+      association_collection.map{|association_hash| build_object(association_hash, association_class)}
     end
 
-    def build_embedded_object(association_hash, association_class)
+    def build_object(association_hash, association_class)
       Object.const_get("Vhx::#{association_class.singularize.capitalize}").new(association_hash)
     end
-
-    def fetch_linked_association(obj_hash)
-      puts "association needs to be fetched."
-    end
-
   end
 end

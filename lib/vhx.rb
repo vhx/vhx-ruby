@@ -14,6 +14,7 @@ require "vhx/objects/vhx_object"
 require "vhx/objects/user"
 require "vhx/objects/package"
 require "vhx/objects/site"
+require "vhx/objects/follower"
 
 module Vhx
   class << self
