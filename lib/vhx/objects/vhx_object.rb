@@ -21,14 +21,19 @@ module Vhx
     def create_associations(obj_hash)
       # obj_hash['_links'].keys.each do |key| # Need to fix gaps in API ['_links']
       ['packages', 'sites'].each do |association_class|
+        instance_variable_set("@#{association_class}", nil)
         self.class.send(:define_method, association_class) do
 
+          if instance_variable_get("@#{association_class}")
+            return instance_variable_get("@#{association_class}")
+          end
+
           if obj_hash['_embedded'] && obj_hash['_embedded'].fetch(association_class, []).length > 0
-            return fetch_embedded_association(obj_hash, association_class)
+            return instance_variable_set("@#{association_class}", fetch_embedded_association(obj_hash, association_class))
           end
 
           if obj_hash['_links'] && obj_hash['_links'].fetch(association_class, []).length > 0
-            return fetch_linked_association(obj_hash, association_class)
+            return instance_variable_set("@#{association_class}", fetch_linked_association(obj_hash, association_class))
           end
 
           puts "Association does not exist"
