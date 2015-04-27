@@ -62,7 +62,8 @@ module Vhx
     end
 
     def build_collection(association_collection, association_class)
-      association_collection.map{|association_hash| build_object(association_hash, association_class)}
+      ar = association_collection.map{|association_hash| build_object(association_hash, association_class)}
+      VhxCollection.new(ar)
     end
 
     def build_object(association_hash, association_class)

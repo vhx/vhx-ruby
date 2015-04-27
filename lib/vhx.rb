@@ -12,6 +12,7 @@ require "vhx/client"
 
 require "vhx/utilities/api_operations"
 require "vhx/utilities/vhx_object"
+require "vhx/utilities/vhx_collection"
 
 require "vhx/objects/user"
 require "vhx/objects/package"
