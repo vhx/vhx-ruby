@@ -1,5 +1,5 @@
 module Vhx
   class File < VhxObject
-    extend ApiOperations
+    include ApiOperations
   end
 end

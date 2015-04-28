@@ -1,5 +1,5 @@
 module Vhx
   class Ticket < VhxObject
-    extend ApiOperations
+    include ApiOperations
   end
 end

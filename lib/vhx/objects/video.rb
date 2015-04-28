@@ -1,5 +1,5 @@
 module Vhx
   class Video < VhxObject
-    extend ApiOperations
+    include ApiOperations
   end
 end

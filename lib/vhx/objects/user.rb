@@ -1,7 +1,7 @@
 module Vhx
   class User < VhxObject
 
-    extend ApiOperations
+    include ApiOperations
 
     def self.me
       response_json = Vhx.connection.get('/me').body
