@@ -10,7 +10,6 @@ module Vhx
 
       super(@message)
     end
-
   end
 
   class BadRequestError < VhxError; end
@@ -20,4 +19,6 @@ module Vhx
   class NotFoundError < VhxError; end
   class NotAcceptableError < VhxError; end
   class ServerError < VhxError; end
+
+  class InvalidObjectError < StandardError; end
 end

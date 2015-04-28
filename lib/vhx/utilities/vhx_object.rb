@@ -6,11 +6,18 @@ module Vhx
 +
     def initialize(obj_hash)
       @obj_hash = obj_hash
-      create_accessors(@obj_hash)
-      create_associations(@obj_hash)
+
+      validate_class(obj_hash)
+      create_accessors(obj_hash)
+      create_associations(obj_hash)
     end
 
   protected
+    def validate_class(obj_hash)
+      unless obj_hash['_links']['self']['href'].match(self.class.to_s.split("::").last.downcase)
+        raise InvalidObjectError.new 'The resource returned from the API does not match the resource requested.'
+      end
+    end
 
     def create_accessors(obj_hash)
       obj_hash.keys.each do |key|
