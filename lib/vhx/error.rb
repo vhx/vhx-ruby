@@ -20,5 +20,5 @@ module Vhx
   class NotAcceptableError < VhxError; end
   class ServerError < VhxError; end
 
-  class InvalidObjectError < StandardError; end
+  class InvalidResourceError < StandardError; end
 end

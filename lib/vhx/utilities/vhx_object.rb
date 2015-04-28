@@ -15,7 +15,7 @@ module Vhx
   protected
     def validate_class(obj_hash)
       unless obj_hash['_links']['self']['href'].match(self.class.to_s.split("::").last.downcase)
-        raise InvalidObjectError.new 'The resource returned from the API does not match the resource requested.'
+        raise InvalidResourceError.new 'The resource returned from the API does not match the resource requested'
       end
     end
 
@@ -45,7 +45,7 @@ module Vhx
             return instance_variable_set("@#{association_class}", fetch_linked_association(obj_hash, association_class))
           end
 
-          puts "Association does not exist"
+          raise InvalidResourceError.new 'Association does not exist'
         end
       end
     end
