@@ -28,21 +28,20 @@ module Vhx
     end
 
     def create_associations(obj_hash)
-      # obj_hash['_links'].keys.each do |key| # Need to fix gaps in API ['_links']
-      ['packages', 'sites'].each do |association_class|
-        instance_variable_set("@#{association_class}", nil)
-        self.class.send(:define_method, association_class) do
+      ['packages', 'sites'].each do |association_method| # Need to fix gaps in API ['_links']
+        instance_variable_set("@#{association_method}", nil)
+        self.class.send(:define_method, association_method) do
 
-          if instance_variable_get("@#{association_class}")
-            return instance_variable_get("@#{association_class}")
+          if instance_variable_get("@#{association_method}")
+            return instance_variable_get("@#{association_method}")
           end
 
-          if obj_hash['_embedded'] && obj_hash['_embedded'].fetch(association_class, []).length > 0
-            return instance_variable_set("@#{association_class}", fetch_embedded_association(obj_hash, association_class))
+          if obj_hash['_embedded'] && obj_hash['_embedded'].fetch(association_method, []).length > 0
+            return instance_variable_set("@#{association_method}", fetch_embedded_association(obj_hash, association_method))
           end
 
-          if obj_hash['_links'] && obj_hash['_links'].fetch(association_class, []).length > 0
-            return instance_variable_set("@#{association_class}", fetch_linked_association(obj_hash, association_class))
+          if obj_hash['_links'] && obj_hash['_links'].fetch(association_method, []).length > 0
+            return instance_variable_set("@#{association_method}", fetch_linked_association(obj_hash, association_method))
           end
 
           raise InvalidResourceError.new 'Association does not exist'
@@ -50,33 +49,24 @@ module Vhx
       end
     end
 
-    def fetch_embedded_association(obj_hash, association_class)
-      association_obj = obj_hash['_embedded'][association_class]
-      build_association(association_obj, association_class)
+    def fetch_embedded_association(obj_hash, association_method)
+      association_obj = obj_hash['_embedded'][association_method]
+      build_association(association_obj, association_method)
     end
 
-    def fetch_linked_association(obj_hash, association_class)
-      hypermedia = obj_hash['_links'][association_class]['href']
+    def fetch_linked_association(obj_hash, association_method)
+      hypermedia = obj_hash['_links'][association_method]['href']
       response_json = Vhx.connection.get(hypermedia).body
-      build_association(response_json, association_class)
+      build_association(response_json, association_method)
     end
 
-    def build_association(association_obj, association_class)
-      case association_obj.class.to_s
-      when 'Array'
-        build_collection(association_obj, association_class)
-      when 'Hash'
-        build_object(association_obj, association_class)
+    def build_association(association_obj, association_method)
+      # Support for legacy arrays, and new collection objects starting with Video resource
+      if association_obj.is_a?(Array) || association_obj.has_key?('total')
+        return VhxCollection.new(association_obj, association_method)
       end
-    end
 
-    def build_collection(association_collection, association_class)
-      ar = association_collection.map{|association_hash| build_object(association_hash, association_class)}
-      VhxCollection.new(ar)
-    end
-
-    def build_object(association_hash, association_class)
-      Object.const_get("Vhx::#{association_class.singularize.capitalize}").new(association_hash)
+      Object.const_get("Vhx::#{association_method.singularize.capitalize}").new(association_obj)
     end
   end
 end
