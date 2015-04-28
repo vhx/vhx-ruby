@@ -5,18 +5,26 @@ module Vhx
         error_class = case env[:status]
         when 200, 204
         when 304
+        when 400
+          BadRequestError
+        when 401
+          if env[:body]['message'] == 'Access token is invalid.'
+            InvalidTokenError
+          else
+            UnauthorizedError
+          end
         when 402
-          Vhx::VhxError::PaymentRequiredError
+          PaymentRequiredError
         when 404
-          Vhx::VhxError::NotFoundError
+          NotFoundError
         when 406
-          Vhx::VhxError::NotAcceptableError
+          NotAcceptableError
         else
-          Vhx::VhxError::ServerError
+          ServerError
         end
 
         if error_class
-          raise error_class.new
+          raise error_class.new(env[:body], env[:status], env[:url])
         end
       end
     end
