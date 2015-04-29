@@ -2,7 +2,6 @@ module Vhx
   module Middleware
     class OAuth2 < Faraday::Middleware
       def call(env)
-        puts env.inspect
         orig_env = env.dup
 
         begin
