@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.crystal.dev/oauth/token
+    body:
+      encoding: UTF-8
+      string: client_id=7ed37300580e27f1acb5f16112e91aba43931d1e8e8c9829cc0fc36358f2cd44&client_secret=ce0fc20cad4cb74b4e5c30803446066b6d8556f413217a6a102aaab03372ac77&grant_type=refresh_token&refresh_token=132916e95bacc977a7890b31bf608e3d641d8a5c19b4ff4ffcf50e5b4273ed99
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 29 Apr 2015 16:56:24 GMT
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"2c27333be5b32867ad2568f15bc55d38"'
+      Set-Cookie:
+      - _session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTVlZjE4MDVkZTU2YTA2N2UxMGY2MTBmNDYyYzdmZGM5BjsAVA%3D%3D--fce39509de4c52685c9dde3a238ac4f4c77ca18f;
+        domain=.crystal.dev; path=/; expires=Fri, 29-Apr-2016 16:56:24 GMT; HttpOnly
+      X-Meta-Request-Version:
+      - 0.3.4
+      X-Request-Id:
+      - 608f6c9df5cbf6c4191aa0dd1ba3eb17
+      X-Runtime:
+      - '0.331092'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"a4ca40067efd7e31535accdc2ac32010dc06b152f1981df938cc7afa14fc9ee9","token_type":"bearer","expires_in":7200,"refresh_token":"dd7204af2df5fe5d961c9d91cba67a14dca226022d1d7caa4da2b4a2b23fa08e","scope":"public"}'
+    http_version:
+  recorded_at: Wed, 29 Apr 2015 16:56:24 GMT
+recorded_with: VCR 2.9.3

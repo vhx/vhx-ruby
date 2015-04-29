@@ -1,16 +1,17 @@
 require 'spec_helper'
 
 describe Vhx::Client do
+  # All local data and not sensitive.
   let(:application_only_credentials){{api_key: "-HyMMMvuWsXSezKvYFJ1N_1xRe9dymeh"}}
-
   let(:application_user_credentials){
     {
       client_id: '7ed37300580e27f1acb5f16112e91aba43931d1e8e8c9829cc0fc36358f2cd44',
       client_secret: 'ce0fc20cad4cb74b4e5c30803446066b6d8556f413217a6a102aaab03372ac77',
       oauth_token: {
-        access_token:  "0db809806968cb57e8d9bf1193a897a4d2fd776162c440cd0117dd6e769dac39",
-        refresh_token: nil,
-        expires_at:    1429741721
+        access_token:  "5eb4f0d3f9e6ef8a3afdf7f3d8288d5067d626f1904b73b5695e4f65104be1c2",
+        refresh_token: "132916e95bacc977a7890b31bf608e3d641d8a5c19b4ff4ffcf50e5b4273ed99",
+        expires_at: 1430330123,
+        expires_in: 7200
       }
     }
   }
@@ -48,6 +49,10 @@ describe Vhx::Client do
   context 'application_user' do
     subject(:vhx_client){ Vhx::Client.new(application_user_credentials)}
 
+    it 'oauth_token presence' do
+      expect(vhx_client.oauth_token).to be_an_instance_of(OAuthToken)
+    end
+
     describe 'connection' do
       it 'initializes faraday connection' do
         expect(vhx_client.connection).to be_an_instance_of(Faraday::Connection)
@@ -62,7 +67,18 @@ describe Vhx::Client do
       end
     end
 
-    describe '#refresh_token' do
+    describe '#refresh_access_token', :vcr do
+      subject(:oauth_token){ vhx_client.oauth_token }
+      let!(:original_access_token){ oauth_token.access_token }
+      before { vhx_client.refresh_access_token }
+
+      it 'oauth_token refreshed' do
+        expect(vhx_client.oauth_token.refreshed).to eq(true)
+      end
+
+      it 'access_token changed' do
+        expect(vhx_client.oauth_token.access_token).to_not eq(original_access_token)
+      end
     end
   end
 end

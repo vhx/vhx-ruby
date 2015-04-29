@@ -38,11 +38,12 @@ Once your user has authenticatecd with VHX, they will be redirected to the uri t
 
 ```ruby
 code  = params[:code]
-token = client.auth_code.get_token(code, redirect_uri: 'https://youapp.com/oauth2/callback', grant_type: 'client_credentials')
+token = client.auth_code.get_token(code, redirect_uri: 'https://youapp.com/oauth2/callback', grant_type: 'authorization_code')
 
-token         = token.token
+access_token  = token.token
 refresh       = token.refresh_token
 expires_at    = token.expires_at
+expires_in    = token.expires_in
 ```
 
 ###Make your first request
@@ -54,9 +55,10 @@ credentials = {
   client_id: client_id,
   client_secret: client_secret,
   oauth_token: {
-    access_token: token,
+    access_token: access_token,
     refresh_token: refresh,
-    expires_at: expires_at
+    expires_at: expires_at,
+    expires_in: expires_in
   }
 }
 ```
