@@ -6,7 +6,7 @@ require "vhx/error"
 require "vhx/oauth_token"
 
 require 'vhx/middleware/error_response'
-# require 'vhx/middleware/oauth2'
+require 'vhx/middleware/oauth2'
 
 require "vhx/client"
 

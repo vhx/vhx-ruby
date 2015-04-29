@@ -17,12 +17,13 @@ module Vhx
       @connection = Faraday::Connection.new(url: api_base_url, headers: configured_headers) do |faraday|
         faraday.request  :url_encoded
         faraday.request  :json
-        faraday.response :json
         faraday.response :logger
+        faraday.use Vhx::Middleware::OAuth2, :vhx_client => self
 
         faraday.adapter Faraday.default_adapter
 
         faraday.use Vhx::Middleware::ErrorResponse
+        faraday.response :json
       end
       @connection
     end
