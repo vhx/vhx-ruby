@@ -6,14 +6,14 @@ module Vhx
     def add_video(identifier)
       response = Vhx.connection.put do |req|
         req.url('/packages/' + self.id.to_s + '/videos')
-        req.body = get_hypermedia(identifier)
+        req.body = { video: get_hypermedia(identifier, 'Video') }
       end
     end
 
     def remove_video(identifier)
       response = Vhx.connection.delete do |req|
         req.url('/packages/' + self.id.to_s + '/videos')
-        req.body = get_hypermedia(identifier)
+        req.body = { video: get_hypermedia(identifier, 'Video') }
       end
     end
 
