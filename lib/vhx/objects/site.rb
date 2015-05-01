@@ -1,5 +1,7 @@
 module Vhx
   class Site < VhxObject
+    include Vhx::ApiOperations::Create
+    include Vhx::ApiOperations::Request
 
     def add_follower(identifier)
       response = Vhx.connection.put do |req|

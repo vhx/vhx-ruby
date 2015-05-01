@@ -10,7 +10,12 @@ require 'vhx/middleware/oauth2'
 
 require "vhx/client"
 
-require "vhx/utilities/api_operations"
+require "vhx/utilities/vhx_helper"
+require "vhx/utilities/api_operations/create"
+require "vhx/utilities/api_operations/delete"
+require "vhx/utilities/api_operations/list"
+require "vhx/utilities/api_operations/request"
+
 require "vhx/utilities/vhx_object"
 require "vhx/utilities/vhx_collection"
 

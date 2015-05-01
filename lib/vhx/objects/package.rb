@@ -1,5 +1,7 @@
 module Vhx
   class Package < VhxObject
+    include Vhx::ApiOperations::Create
+    include Vhx::ApiOperations::Request
 
     def add_video(identifier)
       response = Vhx.connection.put do |req|

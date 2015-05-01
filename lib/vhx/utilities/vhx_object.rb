@@ -2,8 +2,8 @@ require 'active_support/core_ext/string/inflections'
 
 module Vhx
   class VhxObject
-    include ApiOperations
-+
+    include HelperMethods
+
     def initialize(obj_hash)
       @obj_hash = obj_hash
 
