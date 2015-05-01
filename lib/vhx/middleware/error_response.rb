@@ -8,7 +8,7 @@ module Vhx
         when 400
           BadRequestError
         when 401
-          if env[:body]['message'].match(/token/)
+          if env[:body].fetch('message', '').match(/token/)
             InvalidTokenError
           else
             UnauthorizedError
