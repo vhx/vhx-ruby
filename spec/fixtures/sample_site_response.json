@@ -1,0 +1,26 @@
+{
+  "_links": {
+    "self":         { "href": "https://api.vhx.tv/sites/1" },
+    "home_page":    { "href": "http://www.myproject.com" },
+    "followers":    { "href": "https://api.vhx.tv/sites/1/followers" },
+    "subscription": { "href": "https://api.vhx.tv/subscriptions/1" }
+  },
+  "_embedded": {
+    "packages":     [],
+    "subscription": {}
+  },
+  "id": 1,
+  "title": "My Project",
+  "description": "My project description.",
+  "domain": "www.myproject.com",
+  "subdomain": "myproject",
+  "key": "myproject",
+  "color": "#000000",
+  "facebook_url": "https://facebook.com/ksheurs",
+  "twitter_name": "ksheurs",
+  "packages_count": 5,
+  "videos_count": 10,
+  "followers_count": 100,
+  "created_at": "2014-02-25T20:19:30Z",
+  "updated_at": "2014-02-25T20:19:30Z"
+}
