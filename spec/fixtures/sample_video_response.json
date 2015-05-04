@@ -1,25 +1,25 @@
 {
   "_links": {
-    "self":  { "href": "https://api.vhx.tv/videos/1" },
-    "site":  { "href": "https://api.vhx.tv/sites/1" },
-    "files": { "href": "https://api.vhx.tv/videos/1/files" }
+    "self":  { "href": "http://api.crystal.dev/videos/1" },
+    "site":  { "href": "http://api.crystal.dev/sites/1" },
+    "files": { "href": "http://api.crystal.dev/videos/1/files" }
   },
   "_embedded": {
     "site": {},
     "subtitles": [{
       "_links": {
-        "self":  { "href": "https://cdn.vhx.tv/assets/spanish.srt" },
-        "video": { "href": "https://api.vhx.tv/videos/1" },
-        "site":  { "href": "https://api.vhx.tv/sites/1" }
+        "self":  { "href": "http://cdn.crystal.dev/assets/spanish.srt" },
+        "video": { "href": "http://api.crystal.dev/videos/1" },
+        "site":  { "href": "http://api.crystal.dev/sites/1" }
       },
       "language": "Spanish",
       "type": "srt"
     }],
     "files": [{
       "_links": {
-        "self":  { "href": "https://api.vhx.tv/videos/1/files?quality=adaptive&format=m3u8" },
-        "video": { "href": "https://api.vhx.tv/videos/1" },
-        "site":  { "href": "https://api.vhx.tv/sites/1" }
+        "self":  { "href": "http://api.crystal.dev/videos/1/files?quality=adaptive&format=m3u8" },
+        "video": { "href": "http://api.crystal.dev/videos/1" },
+        "site":  { "href": "http://api.crystal.dev/sites/1" }
       },
       "quality": "adaptive",
       "format": "m3u8",
@@ -29,7 +29,7 @@
         "formatted": "1 GB"
       },
       "mime_type": "application/x-mpegURL"
-    }],
+    }]
   },
   "id": 1,
   "title": "My Video",

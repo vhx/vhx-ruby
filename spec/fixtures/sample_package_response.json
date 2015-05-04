@@ -1,14 +1,14 @@
 {
   "_links": {
-    "self":     { "href": "https://api.vhx.tv/packages/1" },
-    "site":     { "href": "https://api.vhx.tv/sites/1" },
-    "buy_page": { "href": "https://mymovie.vhx.tv/buy/my-sku" }
+    "self":     { "href": "http://api.crystal.dev/packages/1025" },
+    "site":     { "href": "http://api.crystal.dev/sites/1900" },
+    "buy_page": { "href": "http://mymovie.vhx.tv/buy/my-sku" }
   },
   "_embedded": {
     "site":   {},
     "videos": []
   },
-  "id": 1,
+  "id": 1025,
   "title": "My Package",
   "description": "My package description.",
   "sku": "my-sku",
@@ -39,7 +39,7 @@
   },
   "is_active": true,
   "is_preorder": false,
-  "release_date": 2014-03-17,
+  "release_date": "2014-03-17",
   "videos_count": 10,
   "extras_count": 0,
   "created_at": "2014-02-25T20:19:30Z",

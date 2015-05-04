@@ -1,9 +1,9 @@
 {
   "_links": {
-    "self":   { "href": "https://api.vhx.tv/videos/1/files?quality=adaptive&format=m3u8" },
-    "video":  { "href": "https://api.vhx.tv/videos/1" },
-    "site":   { "href": "https://api.vhx.tv/sites/1" },
-    "source": { "href": "https://video.vhx.tv/mymovie/adaptive.m3u8?token=f4v3v3i4c2o209_3" }
+    "self":   { "href": "http://api.crystal.dev/videos/3008/files?quality=adaptive&format=m3u8" },
+    "video":  { "href": "http://api.crystal.dev/videos/3008" },
+    "site":   { "href": "http://api.crystal.dev/sites/1900" },
+    "source": { "href": "http://video.crystal.dev/mymovie/adaptive.m3u8?token=f4v3v3i4c2o209_3" }
   },
   "quality": "adaptive",
   "format": "m3u8",
