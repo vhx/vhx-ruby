@@ -1,0 +1,15 @@
+[{
+  "_links": {
+    "self":  { "href": "https://api.vhx.tv/videos/1/files?quality=adaptive&format=m3u8" },
+    "video": { "href": "https://api.vhx.tv/videos/1" },
+    "site":  { "href": "https://api.vhx.tv/sites/1" }
+  },
+  "quality": "adaptive",
+  "format": "m3u8",
+  "method": "hls",
+  "size": {
+    "bytes": 1073741824,
+    "formatted": "1 GB"
+  },
+  "mime_type": "application/x-mpegURL"
+}]
