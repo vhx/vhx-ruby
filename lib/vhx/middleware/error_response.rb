@@ -3,7 +3,7 @@ module Vhx
     class ErrorResponse < Faraday::Response::Middleware
       def on_complete(env)
         error_class = case env[:status]
-        when 200, 204
+        when 200, 201, 204
         when 304
         when 400
           BadRequestError
