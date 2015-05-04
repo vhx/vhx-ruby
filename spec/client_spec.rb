@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+describe Vhx::Client, :vcr do
   describe 'faraday configuration' do
     subject(:vhx_client){ Vhx::Client.new(application_only_credentials)}
 
@@ -51,7 +52,7 @@ require 'spec_helper'
       end
     end
 
-    describe '#refresh_access_token', :vcr do
+    describe '#refresh_access_token' do
       subject(:oauth_token){ vhx_client.oauth_token }
       let!(:original_access_token){ oauth_token.access_token }
       before { vhx_client.refresh_access_token }
