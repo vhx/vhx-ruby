@@ -1,0 +1,212 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://api.crystal.dev/settings
+    body:
+      encoding: UTF-8
+      string: id=1560703&name=Test+Name
+    headers:
+      Authorization:
+      - Bearer 41d2ed8ead125347d38cf13dd7da8df0a32e9c9e839a9ea1b39c0d4f8b9caa92
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Mon, 04 May 2015 20:37:45 GMT
+      Status:
+      - 403 Forbidden
+      Connection:
+      - close
+      Content-Type:
+      - text/plain; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.3.4
+      X-Request-Id:
+      - 403c4f2ca1127fca11eb48051a94749d
+      X-Runtime:
+      - '0.090150'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: "Api::ForbiddenException at /settings\n====================================\n\n>
+        Api::ForbiddenException\n\napp/controllers/api/users_controller.rb, line 38\n------------------------------------------------\n\n```
+        ruby\n   33         (request.path =~ /\\/me/) != nil\n   34       end\n   35
+        \  \n   36       def authorize_update!\n   37         unless Api::UserPolicy.new(current_user,
+        @user).update?\n>  38           raise Api::ForbiddenException\n   39         end\n
+        \  40       end\n   41   \n   42       def user_params\n   43         params.slice(:name,
+        :password)\n```\n\nApp backtrace\n-------------\n\n - app/controllers/api/users_controller.rb:38:in
+        `authorize_update!'\n - lib/classes/host_based_tld_length.rb:16:in `call'\n
+        - lib/classes/maintenance_sites.rb:14:in `call'\n\nFull backtrace\n--------------\n\n
+        - app/controllers/api/users_controller.rb:38:in `authorize_update!'\n - activesupport
+        (3.2.21) lib/active_support/callbacks.rb:528:in `_run__1782285797351838256__process_action__3093888262733133923__callbacks'\n
+        - activesupport (3.2.21) lib/active_support/callbacks.rb:405:in `__run_callback'\n
+        - activesupport (3.2.21) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'\n
+        - activesupport (3.2.21) lib/active_support/callbacks.rb:81:in `run_callbacks'\n
+        - actionpack (3.2.21) lib/abstract_controller/callbacks.rb:17:in `process_action'\n
+        - actionpack (3.2.21) lib/action_controller/metal/rescue.rb:29:in `process_action'\n
+        - actionpack (3.2.21) lib/action_controller/metal/instrumentation.rb:30:in
+        `block in process_action'\n - activesupport (3.2.21) lib/active_support/notifications.rb:123:in
+        `block in instrument'\n - activesupport (3.2.21) lib/active_support/notifications/instrumenter.rb:20:in
+        `instrument'\n - activesupport (3.2.21) lib/active_support/notifications.rb:123:in
+        `instrument'\n - actionpack (3.2.21) lib/action_controller/metal/instrumentation.rb:29:in
+        `process_action'\n - actionpack (3.2.21) lib/action_controller/metal/params_wrapper.rb:207:in
+        `process_action'\n - activerecord (3.2.21) lib/active_record/railties/controller_runtime.rb:18:in
+        `process_action'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/rails3/action_controller.rb:23:in
+        `block in process_action'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/controller_instrumentation.rb:353:in
+        `perform_action_with_newrelic_trace'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/rails3/action_controller.rb:22:in
+        `process_action'\n - actionpack (3.2.21) lib/abstract_controller/base.rb:121:in
+        `process'\n - actionpack (3.2.21) lib/abstract_controller/rendering.rb:45:in
+        `process'\n - actionpack (3.2.21) lib/action_controller/metal.rb:203:in `dispatch'\n
+        - actionpack (3.2.21) lib/action_controller/metal/rack_delegation.rb:14:in
+        `dispatch'\n - actionpack (3.2.21) lib/action_controller/metal.rb:246:in `block
+        in action'\n - actionpack (3.2.21) lib/action_dispatch/routing/route_set.rb:73:in
+        `dispatch'\n - actionpack (3.2.21) lib/action_dispatch/routing/route_set.rb:36:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/routing/mapper.rb:43:in
+        `call'\n - journey (1.0.4) lib/journey/router.rb:68:in `block in call'\n -
+        journey (1.0.4) lib/journey/router.rb:56:in `call'\n - actionpack (3.2.21)
+        lib/action_dispatch/routing/route_set.rb:608:in `call'\n - newrelic_rpm (3.11.1.284)
+        lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in `call'\n -
+        omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'\n - omniauth (1.2.2)
+        lib/omniauth/strategy.rb:164:in `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - omniauth (1.2.2) lib/omniauth/builder.rb:59:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - meta_request (0.3.4) lib/meta_request/middlewares/app_request_handler.rb:13:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - meta_request (0.3.4) lib/meta_request/middlewares/meta_request_handler.rb:13:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - bullet (4.14.4) lib/bullet/rack.rb:12:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/rack/agent_hooks.rb:30:in
+        `traced_call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/rack/browser_monitoring.rb:23:in
+        `traced_call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/rack/developer_mode.rb:56:in
+        `traced_call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n -  () Users/sgrshah/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/bundler/gems/route_downcaser-e854b758a337/lib/route_downcaser/downcase_route_middleware.rb:21:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - lib/classes/host_based_tld_length.rb:16:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - lib/classes/maintenance_sites.rb:14:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack-iframe (0.0.3) lib/rack/iframe.rb:28:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/deflater.rb:13:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/best_standards_support.rb:17:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/etag.rb:23:in `call'\n - newrelic_rpm (3.11.1.284)
+        lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in `call'\n -
+        rack (1.4.5) lib/rack/conditionalget.rb:35:in `call'\n - newrelic_rpm (3.11.1.284)
+        lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in `call'\n -
+        actionpack (3.2.21) lib/action_dispatch/middleware/head.rb:14:in `call'\n
+        - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/params_parser.rb:21:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - warden (1.2.3) lib/warden/manager.rb:35:in `block in call'\n -
+        warden (1.2.3) lib/warden/manager.rb:34:in `call'\n - newrelic_rpm (3.11.1.284)
+        lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in `call'\n -
+        actionpack (3.2.21) lib/action_dispatch/middleware/flash.rb:242:in `call'\n
+        - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'\n
+        - rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/cookies.rb:341:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - activerecord (3.2.21) lib/active_record/query_cache.rb:64:in `call'\n
+        - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - activerecord (3.2.21) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/callbacks.rb:28:in
+        `block in call'\n - activesupport (3.2.21) lib/active_support/callbacks.rb:416:in
+        `_run__1213799619561774363__call__3596182559490352730__callbacks'\n - activesupport
+        (3.2.21) lib/active_support/callbacks.rb:405:in `__run_callback'\n - activesupport
+        (3.2.21) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'\n -
+        activesupport (3.2.21) lib/active_support/callbacks.rb:81:in `run_callbacks'\n
+        - actionpack (3.2.21) lib/action_dispatch/middleware/callbacks.rb:27:in `call'\n
+        - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/reloader.rb:65:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/remote_ip.rb:31:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'\n
+        - better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'\n
+        - better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack-contrib (1.2.0) lib/rack/contrib/response_headers.rb:17:in
+        `call'\n - meta_request (0.3.4) lib/meta_request/middlewares/headers.rb:16:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/debug_exceptions.rb:16:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/show_exceptions.rb:56:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - railties (3.2.21) lib/rails/rack/logger.rb:32:in `call_app'\n -
+        railties (3.2.21) lib/rails/rack/logger.rb:16:in `block in call'\n - activesupport
+        (3.2.21) lib/active_support/tagged_logging.rb:22:in `tagged'\n - railties
+        (3.2.21) lib/rails/rack/logger.rb:16:in `call'\n - quiet_assets (1.1.0) lib/quiet_assets.rb:27:in
+        `call_with_quiet_assets'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - request_store (1.1.0) lib/request_store/middleware.rb:8:in `call'\n
+        - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - actionpack (3.2.21) lib/action_dispatch/middleware/request_id.rb:22:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/runtime.rb:17:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - activesupport (3.2.21) lib/active_support/cache/strategy/local_cache.rb:72:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/lock.rb:15:in `call'\n - newrelic_rpm (3.11.1.284)
+        lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in `call'\n -
+        actionpack (3.2.21) lib/action_dispatch/middleware/static.rb:83:in `call'\n
+        - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n -  () Users/sgrshah/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/bundler/gems/font_assets-fd695666a1b9/lib/font_assets/middleware.rb:21:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack-cors (0.3.1) lib/rack/cors.rb:72:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack-timeout (0.2.1) lib/rack/timeout.rb:108:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - honeybadger (2.0.10) lib/honeybadger/rack/error_notifier.rb:33:in
+        `block in call'\n - honeybadger (2.0.10) lib/honeybadger/config.rb:189:in
+        `with_request'\n - honeybadger (2.0.10) lib/honeybadger/rack/error_notifier.rb:30:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - honeybadger (2.0.10) lib/honeybadger/rack/user_feedback.rb:29:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - honeybadger (2.0.10) lib/honeybadger/rack/user_informer.rb:19:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - librato-rack (0.4.5) lib/librato/rack.rb:94:in `process_request'\n
+        - librato-rack (0.4.5) lib/librato/rack.rb:64:in `call'\n - newrelic_rpm (3.11.1.284)
+        lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in `call'\n -
+        railties (3.2.21) lib/rails/engine.rb:484:in `call'\n - railties (3.2.21)
+        lib/rails/application.rb:231:in `call'\n - railties (3.2.21) lib/rails/railtie/configurable.rb:30:in
+        `method_missing'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/lint.rb:48:in `_call'\n - rack (1.4.5) lib/rack/lint.rb:36:in
+        `call'\n - newrelic_rpm (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/showexceptions.rb:24:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/commonlogger.rb:33:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/chunked.rb:43:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - rack (1.4.5) lib/rack/content_length.rb:14:in `call'\n - newrelic_rpm
+        (3.11.1.284) lib/new_relic/agent/instrumentation/middleware_tracing.rb:67:in
+        `call'\n - unicorn (4.8.3) lib/unicorn/http_server.rb:576:in `process_client'\n
+        - gctools (0.2.3) lib/gctools/oobgc/unicorn_middleware.rb:13:in `process_client'\n
+        - unicorn (4.8.3) lib/unicorn/http_server.rb:670:in `worker_loop'\n - unicorn
+        (4.8.3) lib/unicorn/http_server.rb:525:in `spawn_missing_workers'\n - unicorn
+        (4.8.3) lib/unicorn/http_server.rb:140:in `start'\n - unicorn (4.8.3) bin/unicorn:126:in
+        `<top (required)>'\n - /Users/sgrshah/.rbenv/versions/2.1.5/bin/unicorn:23:in
+        `<main>'\n\n"
+    http_version: 
+  recorded_at: Mon, 04 May 2015 20:37:45 GMT
+recorded_with: VCR 2.9.3

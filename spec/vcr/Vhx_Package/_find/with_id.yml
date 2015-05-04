@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.crystal.dev/packages/1900
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 41d2ed8ead125347d38cf13dd7da8df0a32e9c9e839a9ea1b39c0d4f8b9caa92
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 04 May 2015 19:10:17 GMT
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Cache-Control:
+      - public, no-cache, must-revalidate
+      Surrogate-Control:
+      - max-age=3600
+      Surrogate-Key:
+      - packages/1900 sites/3165
+      Etag:
+      - '"a90cef89d8a62fb865e27c62fa9f1fac"'
+      Last-Modified:
+      - Fri, 06 Mar 2015 07:02:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Meta-Request-Version:
+      - 0.3.4
+      X-Request-Id:
+      - 0b8e6bed23b5b3a0a27c1455390a2028
+      X-Runtime:
+      - '0.335076'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "_links": {
+            "self": {
+              "href": "http://api.crystal.dev/packages/1900"
+            },
+            "site": {
+              "href": "http://api.crystal.dev/sites/3165"
+            },
+            "videos": {
+              "href": "http://api.crystal.dev/packages/1900/videos"
+            },
+            "buy_page": {
+              "href": "http://insidesportfishing.crystal.dev/buy/laguna-palooza"
+            },
+            "home_page": {
+              "href": "http://insidesportfishing.crystal.dev/packages/laguna-palooza"
+            }
+          },
+          "_embedded": {
+            "site": {
+              "_links": {
+                "self": {
+                  "href": "http://api.crystal.dev/sites/3165"
+                },
+                "home_page": {
+                  "href": "http://insidesportfishing.crystal.dev"
+                },
+                "followers": {
+                  "href": "http://api.crystal.dev/sites/3165/followers"
+                }
+              },
+              "id": 3165,
+              "title": "Inside Sportfishing",
+              "description": "Inside Sportfishing, the longest-running, highest-rated fishing show in Fox Sport's history proudly invites you to become a part of some of the most exciting fishing ever captured on film. ",
+              "domain": "insidesportfishing.crystal.dev",
+              "subdomain": "insidesportfishing",
+              "key": "insidesportfishing",
+              "color": "#0D0DA3",
+              "facebook_url": "https://www.facebook.com/InsideSportfishing",
+              "twitter_name": null,
+              "google_analytics_id": "UA-46828578-1",
+              "packages_count": 67,
+              "videos_count": 71,
+              "followers_count": 76,
+              "created_at": "2014-03-13T23:28:16Z",
+              "updated_at": "2015-03-06T07:04:01Z"
+            },
+            "videos": [
+              {
+                "_links": {
+                  "self": {
+                    "href": "http://api.crystal.dev/videos/4539"
+                  },
+                  "site": {
+                    "href": "http://api.crystal.dev/sites/3165"
+                  },
+                  "files": {
+                    "href": "http://api.crystal.dev/videos/4539/files"
+                  }
+                },
+                "_embedded": {
+                  "subtitles": [
+
+                  ]
+                },
+                "id": 4539,
+                "title": "Laguna Palooza ",
+                "description": "An behind the scenes look at a few very talented musicians, including Toyo Shimano,  in an impromptu jam session.",
+                "status": "uploaded",
+                "duration": {
+                  "seconds": 2073,
+                  "formatted": "00:34:33"
+                },
+                "thumbnail": {
+                  "small": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/video-4539-1403717071-240x135.jpg",
+                  "medium": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/video-4539-1403717071-640x360.jpg",
+                  "large": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/video-4539-1403717071-1280x720.jpg"
+                },
+                "is_drm_enabled": false,
+                "subtitles_count": 0,
+                "files_count": 3,
+                "created_at": "2014-04-01T17:49:57Z",
+                "updated_at": "2015-03-06T07:02:04Z",
+                "position": 0
+              }
+            ],
+            "trailer": null
+          },
+          "id": 1900,
+          "title": "Laguna Palooza",
+          "description": "An behind the scenes look at a few very talented musicians, including Toyo Shimano,  in an impromptu jam session.",
+          "sku": "laguna-palooza",
+          "price": {
+            "cents": 499,
+            "currency": "USD",
+            "formatted": "$4.99",
+            "US": {
+              "cents": 499,
+              "currency": "USD",
+              "formatted": "$4.99"
+            }
+          },
+          "rental": null,
+          "trailer_url": null,
+          "trailer_embed_code": "<iframe src=\"http://embed.crystal.dev/packages/1900\" width=\"640\" height=\"360\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>",
+          "thumbnail": {
+            "small": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/product-1900-1403715468-240x135.jpg",
+            "medium": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/product-1900-1403715468-640x360.jpg",
+            "large": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/product-1900-1403715468-1280x720.jpg",
+            "blurred": "https://dr56wvhu2c8zo.cloudfront.net/insidesportfishing/assets/e7bedb2c-8769-4975-aece-c477f06e0a05/screen-shot-2014-05-04-at-3-35-52-am.jpg"
+          },
+          "is_active": true,
+          "is_preorder": false,
+          "release_date": null,
+          "videos_count": 1,
+          "extras_count": 0,
+          "created_at": "2014-05-02T19:56:43Z",
+          "updated_at": "2015-03-06T07:02:50Z"
+        }
+    http_version: 
+  recorded_at: Mon, 04 May 2015 19:10:17 GMT
+recorded_with: VCR 2.9.3

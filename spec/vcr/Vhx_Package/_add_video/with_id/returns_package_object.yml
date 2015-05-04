@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://api.crystal.dev/packages/1025/videos
+    body:
+      encoding: UTF-8
+      string: video=%2Fvideos%2F7830
+    headers:
+      Authorization:
+      - Bearer 41d2ed8ead125347d38cf13dd7da8df0a32e9c9e839a9ea1b39c0d4f8b9caa92
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Mon, 04 May 2015 19:36:50 GMT
+      Status:
+      - 204 No Content
+      Connection:
+      - close
+      Cache-Control:
+      - private, no-cache, max-age=0, must-revalidate
+      Surrogate-Control:
+      - no-cache
+      X-Ua-Compatible:
+      - IE=Edge
+      Set-Cookie:
+      - _session=BAh7CEkiD3Nlc3Npb25faWQGOgZFVEkiJWE4NWU5YzExMTEzMjIyNmZkNDg3NzlkNTczODgyMWI5BjsAVEkiGGN1cnJlbnRfYXBwbGljYXRpb24GOwBGSSIKc2FnYXIGOwBUSSIRY3VycmVudF91c2VyBjsARkkiEXNhZ2FyQHZoeC50dgY7AFQ%3D--6cf7ca1616eba66d982c54a595ee5ebe9bf571a8;
+        domain=.crystal.dev; path=/; expires=Wed, 04-May-2016 19:36:50 GMT; HttpOnly
+      X-Meta-Request-Version:
+      - 0.3.4
+      X-Request-Id:
+      - 7d391caa7d651535128b72ea5b9d0542
+      X-Runtime:
+      - '1.679324'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 04 May 2015 19:36:50 GMT
+recorded_with: VCR 2.9.3

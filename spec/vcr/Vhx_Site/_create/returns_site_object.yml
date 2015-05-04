@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.crystal.dev/sites
+    body:
+      encoding: UTF-8
+      string: description=For+testing+gem&title=Gem+New+Site
+    headers:
+      Authorization:
+      - Bearer 41d2ed8ead125347d38cf13dd7da8df0a32e9c9e839a9ea1b39c0d4f8b9caa92
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Mon, 04 May 2015 19:42:35 GMT
+      Status:
+      - 201 Created
+      Connection:
+      - close
+      Cache-Control:
+      - private, no-cache, max-age=0, must-revalidate
+      Surrogate-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      X-Ua-Compatible:
+      - IE=Edge
+      Set-Cookie:
+      - _session=BAh7CEkiD3Nlc3Npb25faWQGOgZFVEkiJWM5NDg5YWIyNWM3MjZkNTk2MTMxNjJhYjU4YzIxZDQ2BjsAVEkiGGN1cnJlbnRfYXBwbGljYXRpb24GOwBGSSIKc2FnYXIGOwBUSSIRY3VycmVudF91c2VyBjsARkkiEXNhZ2FyQHZoeC50dgY7AFQ%3D--450649d96553800bb2754a3186bb6ef10b931c2a;
+        domain=.crystal.dev; path=/; expires=Wed, 04-May-2016 19:42:35 GMT; HttpOnly
+      X-Meta-Request-Version:
+      - 0.3.4
+      X-Request-Id:
+      - c1a4ad6581fce77a5a48ddcca939ca19
+      X-Runtime:
+      - '0.633497'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "_links": {
+            "self": {
+              "href": "http://api.crystal.dev/sites/11439"
+            },
+            "home_page": {
+              "href": "http://gemnewsite.crystal.dev"
+            },
+            "followers": {
+              "href": "http://api.crystal.dev/sites/11439/followers"
+            }
+          },
+          "_embedded": {
+            "subscription": null,
+            "packages": [
+
+            ]
+          },
+          "id": 11439,
+          "title": "Gem New Site",
+          "description": "For testing gem",
+          "domain": "gemnewsite.crystal.dev",
+          "subdomain": "gemnewsite",
+          "key": "gemnewsite",
+          "color": "#22B9B0",
+          "facebook_url": null,
+          "twitter_name": null,
+          "google_analytics_id": null,
+          "packages_count": 0,
+          "videos_count": 0,
+          "followers_count": 0,
+          "created_at": "2015-05-04T19:42:34Z",
+          "updated_at": "2015-05-04T19:42:34Z"
+        }
+    http_version: 
+  recorded_at: Mon, 04 May 2015 19:42:35 GMT
+recorded_with: VCR 2.9.3
