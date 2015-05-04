@@ -1,6 +1,7 @@
 require 'vhx'
 require 'vcr'
 require 'json'
+require 'test_data'
 
 VCR.configure do |vcr_config|
   vcr_config.cassette_library_dir = 'spec/vcr'
