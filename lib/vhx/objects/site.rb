@@ -4,7 +4,7 @@ module Vhx
     include Vhx::ApiOperations::Request
 
     def add_follower(identifier)
-      if identifier.match(/@/)
+      if identifier.class.to_s == 'String' && identifier.match(/@/)
         body = {user: {email: identifier}}
       else
         body = {user: get_hypermedia(identifier, 'User')}
@@ -14,13 +14,16 @@ module Vhx
         req.url('/sites/' + self.id.to_s + '/followers')
         req.body = body
       end
+
+      self
     end
 
-    def remove_follower(identifier)
+    def remove_follower
       response = Vhx.connection.delete do |req|
         req.url('/sites/' + self.id.to_s + '/followers')
-        # req.body = {user: get_hypermedia(identifier, 'User')} #only current_user can be removed.
       end
+
+      self
     end
 
   end

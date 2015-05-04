@@ -8,6 +8,8 @@ module Vhx
         req.url('/packages/' + self.id.to_s + '/videos')
         req.body = { video: get_hypermedia(identifier, 'Video') }
       end
+
+      self
     end
 
     def remove_video(identifier)
@@ -15,6 +17,8 @@ module Vhx
         req.url('/packages/' + self.id.to_s + '/videos')
         req.body = { video: get_hypermedia(identifier, 'Video') }
       end
+
+      self
     end
 
   end
