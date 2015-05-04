@@ -3,19 +3,18 @@ require 'spec_helper'
 describe Vhx::User do
   let(:sample_user_response){ JSON.parse(File.read("spec/fixtures/sample_user_response.json")) }
   let(:vhx_user){Vhx::User.new(sample_user_response)}
-  let(:credentials){ JSON.parse(File.read("spec/fixtures/test_credentials.json")) }
 
   before {
-    Vhx.setup(credentials)
+    Vhx.setup(test_credentials)
   }
 
   describe '::find', :vcr do
     it 'with id' do
-      expect(Vhx::User.find(179232)).to be_instance_of(Vhx::User)
+      expect(Vhx::User.find(1560703)).to be_instance_of(Vhx::User)
     end
 
     it 'with hypermedia' do
-      expect(Vhx::User.find('http://api.crystal.dev/users/179232')).to be_instance_of(Vhx::User)
+      expect(Vhx::User.find('http://api.crystal.dev/users/1560703')).to be_instance_of(Vhx::User)
     end
   end
 
@@ -41,8 +40,8 @@ describe Vhx::User do
 
   describe 'associations' do
     it 'are present' do
-      expect(vhx_user.packages).to_not be_nil
-      expect(vhx_user.sites).to_not be_nil
+      expect{vhx_user.packages}.to_not raise_error(NoMethodError)
+      expect{vhx_user.sites}.to_not raise_error(NoMethodError)
     end
 
     it 'errors if not present' do
