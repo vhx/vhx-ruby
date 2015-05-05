@@ -10,11 +10,11 @@ describe Vhx::Package, :vcr do
 
   describe '::find' do
     it 'with id' do
-      expect(Vhx::Package.find(1900)).to be_instance_of(Vhx::Package)
+      expect(Vhx::Package.find(1025)).to be_instance_of(Vhx::Package)
     end
 
     it 'with hypermedia' do
-      expect(Vhx::Package.find('http://api.crystal.dev/packages/1900')).to be_instance_of(Vhx::Package)
+      expect(Vhx::Package.find('http://api.crystal.dev/packages/1025')).to be_instance_of(Vhx::Package)
     end
   end
 

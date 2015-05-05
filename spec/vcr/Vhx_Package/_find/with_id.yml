@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.crystal.dev/packages/1900
+    uri: http://api.crystal.dev/packages/1025
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization:
-      - Bearer 41d2ed8ead125347d38cf13dd7da8df0a32e9c9e839a9ea1b39c0d4f8b9caa92
+      - Bearer cc7d6c93bde201968f077b73acd5ee11a2768cbcb9b43122eb294004bf5b4480
       User-Agent:
       - Faraday v0.9.1
       Accept-Encoding:
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 04 May 2015 19:10:17 GMT
+      - Tue, 05 May 2015 18:45:45 GMT
       Status:
       - 200 OK
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Surrogate-Control:
       - max-age=3600
       Surrogate-Key:
-      - packages/1900 sites/3165
+      - packages/1025 sites/1900
       Etag:
-      - '"a90cef89d8a62fb865e27c62fa9f1fac"'
+      - '"45ff7920d37d7ddc4663ef9da4e45af8"'
       Last-Modified:
-      - Fri, 06 Mar 2015 07:02:50 GMT
+      - Wed, 18 Feb 2015 16:21:15 GMT
       Content-Type:
       - application/json; charset=utf-8
       Vary:
@@ -45,9 +45,9 @@ http_interactions:
       X-Meta-Request-Version:
       - 0.3.4
       X-Request-Id:
-      - 0b8e6bed23b5b3a0a27c1455390a2028
+      - 7c4a92545e658bebbe1c8325877d6d0e
       X-Runtime:
-      - '0.335076'
+      - '0.641733'
       Transfer-Encoding:
       - chunked
     body:
@@ -56,61 +56,127 @@ http_interactions:
         {
           "_links": {
             "self": {
-              "href": "http://api.crystal.dev/packages/1900"
+              "href": "http://api.crystal.dev/packages/1025"
             },
             "site": {
-              "href": "http://api.crystal.dev/sites/3165"
+              "href": "http://api.crystal.dev/sites/1900"
             },
             "videos": {
-              "href": "http://api.crystal.dev/packages/1900/videos"
+              "href": "http://api.crystal.dev/packages/1025/videos"
             },
             "buy_page": {
-              "href": "http://insidesportfishing.crystal.dev/buy/laguna-palooza"
+              "href": "http://sagartestmovie.crystal.dev/buy/testing123"
             },
             "home_page": {
-              "href": "http://insidesportfishing.crystal.dev/packages/laguna-palooza"
+              "href": "http://sagartestmovie.crystal.dev/packages/testing123"
             }
           },
           "_embedded": {
             "site": {
               "_links": {
                 "self": {
-                  "href": "http://api.crystal.dev/sites/3165"
+                  "href": "http://api.crystal.dev/sites/1900"
                 },
                 "home_page": {
-                  "href": "http://insidesportfishing.crystal.dev"
+                  "href": "http://sagartestmovie.crystal.dev"
                 },
                 "followers": {
-                  "href": "http://api.crystal.dev/sites/3165/followers"
+                  "href": "http://api.crystal.dev/sites/1900/followers"
                 }
               },
-              "id": 3165,
-              "title": "Inside Sportfishing",
-              "description": "Inside Sportfishing, the longest-running, highest-rated fishing show in Fox Sport's history proudly invites you to become a part of some of the most exciting fishing ever captured on film. ",
-              "domain": "insidesportfishing.crystal.dev",
-              "subdomain": "insidesportfishing",
-              "key": "insidesportfishing",
-              "color": "#0D0DA3",
-              "facebook_url": "https://www.facebook.com/InsideSportfishing",
+              "id": 1900,
+              "title": "SagarTestMovie",
+              "description": "This is my test movie. ",
+              "domain": "sagartestmovie.crystal.dev",
+              "subdomain": "sagartestmovie",
+              "key": "sagartestmovie",
+              "color": "#28DBF7",
+              "facebook_url": null,
               "twitter_name": null,
-              "google_analytics_id": "UA-46828578-1",
-              "packages_count": 67,
-              "videos_count": 71,
-              "followers_count": 76,
-              "created_at": "2014-03-13T23:28:16Z",
-              "updated_at": "2015-03-06T07:04:01Z"
+              "google_analytics_id": "",
+              "packages_count": 2,
+              "videos_count": 4,
+              "followers_count": 31,
+              "created_at": "2013-12-27T00:20:28Z",
+              "updated_at": "2015-05-04T20:46:01Z"
             },
             "videos": [
               {
                 "_links": {
                   "self": {
-                    "href": "http://api.crystal.dev/videos/4539"
+                    "href": "http://api.crystal.dev/videos/3008"
                   },
                   "site": {
-                    "href": "http://api.crystal.dev/sites/3165"
+                    "href": "http://api.crystal.dev/sites/1900"
                   },
                   "files": {
-                    "href": "http://api.crystal.dev/videos/4539/files"
+                    "href": "http://api.crystal.dev/videos/3008/files"
+                  }
+                },
+                "_embedded": {
+                  "subtitles": [
+                    {
+                      "_links": {
+                        "self": {
+                          "href": "http://api.crystal.dev/videos/7726"
+                        },
+                        "video": {
+                          "href": "http://api.crystal.dev/videos/3008"
+                        },
+                        "site": {
+                          "href": "http://api.crystal.dev/sites/1900"
+                        }
+                      },
+                      "language": "Bengali",
+                      "type": "video"
+                    },
+                    {
+                      "_links": {
+                        "self": {
+                          "href": "http://api.crystal.dev/videos/5558"
+                        },
+                        "video": {
+                          "href": "http://api.crystal.dev/videos/3008"
+                        },
+                        "site": {
+                          "href": "http://api.crystal.dev/sites/1900"
+                        }
+                      },
+                      "language": "English",
+                      "type": "video"
+                    }
+                  ]
+                },
+                "id": 3008,
+                "title": "Test Movie",
+                "description": "Testing",
+                "status": "uploaded",
+                "duration": {
+                  "seconds": 19,
+                  "formatted": "00:00:19"
+                },
+                "thumbnail": {
+                  "small": "https://dv6n47kh00ig2.cloudfront.net/sagartestmovie/assets/images/video-3008-1403716255-240x135.jpg",
+                  "medium": "https://dv6n47kh00ig2.cloudfront.net/sagartestmovie/assets/images/video-3008-1403716255-640x360.jpg",
+                  "large": "https://dv6n47kh00ig2.cloudfront.net/sagartestmovie/assets/images/video-3008-1403716255-1280x720.jpg"
+                },
+                "is_drm_enabled": false,
+                "subtitles_count": 2,
+                "files_count": 5,
+                "created_at": "2014-02-06T05:30:18Z",
+                "updated_at": "2015-02-18T16:21:24Z",
+                "position": 0
+              },
+              {
+                "_links": {
+                  "self": {
+                    "href": "http://api.crystal.dev/videos/7830"
+                  },
+                  "site": {
+                    "href": "http://api.crystal.dev/sites/1900"
+                  },
+                  "files": {
+                    "href": "http://api.crystal.dev/videos/7830/files"
                   }
                 },
                 "_embedded": {
@@ -118,60 +184,60 @@ http_interactions:
 
                   ]
                 },
-                "id": 4539,
-                "title": "Laguna Palooza ",
-                "description": "An behind the scenes look at a few very talented musicians, including Toyo Shimano,  in an impromptu jam session.",
-                "status": "uploaded",
+                "id": 7830,
+                "title": "test movie",
+                "description": null,
+                "status": null,
                 "duration": {
-                  "seconds": 2073,
-                  "formatted": "00:34:33"
+                  "seconds": 0,
+                  "formatted": "00:00:00"
                 },
                 "thumbnail": {
-                  "small": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/video-4539-1403717071-240x135.jpg",
-                  "medium": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/video-4539-1403717071-640x360.jpg",
-                  "large": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/video-4539-1403717071-1280x720.jpg"
+                  "small": "http://cdn.crystal.dev/assets/thumbnails/default-small.png",
+                  "medium": "http://cdn.crystal.dev/assets/thumbnails/default-medium.png",
+                  "large": "http://cdn.crystal.dev/assets/thumbnails/default-large.png"
                 },
                 "is_drm_enabled": false,
                 "subtitles_count": 0,
-                "files_count": 3,
-                "created_at": "2014-04-01T17:49:57Z",
-                "updated_at": "2015-03-06T07:02:04Z",
-                "position": 0
+                "files_count": 0,
+                "created_at": "2014-07-14T15:19:03Z",
+                "updated_at": "2015-05-04T19:36:50Z",
+                "position": 1
               }
             ],
             "trailer": null
           },
-          "id": 1900,
-          "title": "Laguna Palooza",
-          "description": "An behind the scenes look at a few very talented musicians, including Toyo Shimano,  in an impromptu jam session.",
-          "sku": "laguna-palooza",
+          "id": 1025,
+          "title": "testing123",
+          "description": "test",
+          "sku": "testing123",
           "price": {
-            "cents": 499,
+            "cents": 200,
             "currency": "USD",
-            "formatted": "$4.99",
+            "formatted": "$2",
             "US": {
-              "cents": 499,
+              "cents": 200,
               "currency": "USD",
-              "formatted": "$4.99"
+              "formatted": "$2"
             }
           },
           "rental": null,
           "trailer_url": null,
-          "trailer_embed_code": "<iframe src=\"http://embed.crystal.dev/packages/1900\" width=\"640\" height=\"360\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>",
+          "trailer_embed_code": "<iframe src=\"http://embed.crystal.dev/packages/1025\" width=\"640\" height=\"360\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>",
           "thumbnail": {
-            "small": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/product-1900-1403715468-240x135.jpg",
-            "medium": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/product-1900-1403715468-640x360.jpg",
-            "large": "https://dv6n47kh00ig2.cloudfront.net/insidesportfishing/assets/images/product-1900-1403715468-1280x720.jpg",
-            "blurred": "https://dr56wvhu2c8zo.cloudfront.net/insidesportfishing/assets/e7bedb2c-8769-4975-aece-c477f06e0a05/screen-shot-2014-05-04-at-3-35-52-am.jpg"
+            "small": "http://cdn.crystal.dev/assets/thumbnails/default-small.png",
+            "medium": "http://cdn.crystal.dev/assets/thumbnails/default-medium.png",
+            "large": "http://cdn.crystal.dev/assets/thumbnails/default-large.png",
+            "blurred": null
           },
-          "is_active": true,
+          "is_active": false,
           "is_preorder": false,
           "release_date": null,
-          "videos_count": 1,
+          "videos_count": 2,
           "extras_count": 0,
-          "created_at": "2014-05-02T19:56:43Z",
-          "updated_at": "2015-03-06T07:02:50Z"
+          "created_at": "2014-02-06T18:00:39Z",
+          "updated_at": "2015-02-18T16:21:15Z"
         }
     http_version: 
-  recorded_at: Mon, 04 May 2015 19:10:17 GMT
+  recorded_at: Tue, 05 May 2015 18:45:45 GMT
 recorded_with: VCR 2.9.3
