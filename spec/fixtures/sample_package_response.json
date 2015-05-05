@@ -1,47 +1,185 @@
 {
   "_links": {
-    "self":     { "href": "http://api.crystal.dev/packages/1025" },
-    "site":     { "href": "http://api.crystal.dev/sites/1900" },
-    "buy_page": { "href": "http://mymovie.vhx.tv/buy/my-sku" }
-  },
-  "_embedded": {
-    "site":   {},
-    "videos": []
-  },
-  "id": 1025,
-  "title": "My Package",
-  "description": "My package description.",
-  "sku": "my-sku",
-  "price": {
-    "cents": 500,
-    "currency": "USD",
-    "formatted": "$5",
-    "GB": {
-      "cents": 100,
-      "currency": "GBP",
-      "formatted": "£1"
+    "self": {
+      "href": "http://api.crystal.dev/packages/1025"
+    },
+    "site": {
+      "href": "http://api.crystal.dev/sites/1900"
+    },
+    "videos": {
+      "href": "http://api.crystal.dev/packages/1025/videos"
+    },
+    "buy_page": {
+      "href": "http://sagartestmovie.crystal.dev/buy/testing123"
+    },
+    "home_page": {
+      "href": "http://sagartestmovie.crystal.dev/packages/testing123"
     }
   },
-  "rental": {
-    "price": {
-      "cents": 300,
-      "currency": "USD",
-      "formatted": "$3"
+  "_embedded": {
+    "site": {
+      "_links": {
+        "self": {
+          "href": "http://api.crystal.dev/sites/1900"
+        },
+        "home_page": {
+          "href": "http://sagartestmovie.crystal.dev"
+        },
+        "followers": {
+          "href": "http://api.crystal.dev/sites/1900/followers"
+        }
+      },
+      "id": 1900,
+      "title": "SagarTestMovie",
+      "description": "This is my test movie. ",
+      "domain": "sagartestmovie.crystal.dev",
+      "subdomain": "sagartestmovie",
+      "key": "sagartestmovie",
+      "color": "#28DBF7",
+      "facebook_url": null,
+      "twitter_name": null,
+      "google_analytics_id": "",
+      "packages_count": 2,
+      "videos_count": 4,
+      "followers_count": 31,
+      "created_at": "2013-12-27T00:20:28Z",
+      "updated_at": "2015-05-04T20:46:01Z"
     },
-    "period": 259200
+    "videos": [
+      {
+        "_links": {
+          "self": {
+            "href": "http://api.crystal.dev/videos/3008"
+          },
+          "site": {
+            "href": "http://api.crystal.dev/sites/1900"
+          },
+          "files": {
+            "href": "http://api.crystal.dev/videos/3008/files"
+          }
+        },
+        "_embedded": {
+          "subtitles": [
+            {
+              "_links": {
+                "self": {
+                  "href": "http://api.crystal.dev/videos/7726"
+                },
+                "video": {
+                  "href": "http://api.crystal.dev/videos/3008"
+                },
+                "site": {
+                  "href": "http://api.crystal.dev/sites/1900"
+                }
+              },
+              "language": "Bengali",
+              "type": "video"
+            },
+            {
+              "_links": {
+                "self": {
+                  "href": "http://api.crystal.dev/videos/5558"
+                },
+                "video": {
+                  "href": "http://api.crystal.dev/videos/3008"
+                },
+                "site": {
+                  "href": "http://api.crystal.dev/sites/1900"
+                }
+              },
+              "language": "English",
+              "type": "video"
+            }
+          ]
+        },
+        "id": 3008,
+        "title": "Test Movie",
+        "description": "Testing",
+        "status": "uploaded",
+        "duration": {
+          "seconds": 19,
+          "formatted": "00:00:19"
+        },
+        "thumbnail": {
+          "small": "https://dv6n47kh00ig2.cloudfront.net/sagartestmovie/assets/images/video-3008-1403716255-240x135.jpg",
+          "medium": "https://dv6n47kh00ig2.cloudfront.net/sagartestmovie/assets/images/video-3008-1403716255-640x360.jpg",
+          "large": "https://dv6n47kh00ig2.cloudfront.net/sagartestmovie/assets/images/video-3008-1403716255-1280x720.jpg"
+        },
+        "is_drm_enabled": false,
+        "subtitles_count": 2,
+        "files_count": 5,
+        "created_at": "2014-02-06T05:30:18Z",
+        "updated_at": "2015-02-18T16:21:24Z",
+        "position": 0
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "http://api.crystal.dev/videos/7830"
+          },
+          "site": {
+            "href": "http://api.crystal.dev/sites/1900"
+          },
+          "files": {
+            "href": "http://api.crystal.dev/videos/7830/files"
+          }
+        },
+        "_embedded": {
+          "subtitles": [
+
+          ]
+        },
+        "id": 7830,
+        "title": "test movie",
+        "description": null,
+        "status": null,
+        "duration": {
+          "seconds": 0,
+          "formatted": "00:00:00"
+        },
+        "thumbnail": {
+          "small": "http://cdn.crystal.dev/assets/thumbnails/default-small.png",
+          "medium": "http://cdn.crystal.dev/assets/thumbnails/default-medium.png",
+          "large": "http://cdn.crystal.dev/assets/thumbnails/default-large.png"
+        },
+        "is_drm_enabled": false,
+        "subtitles_count": 0,
+        "files_count": 0,
+        "created_at": "2014-07-14T15:19:03Z",
+        "updated_at": "2015-05-04T19:36:50Z",
+        "position": 1
+      }
+    ],
+    "trailer": null
   },
-  "trailer_url": "https://www.youtube.com/watch?v=dINgx0y4GqM",
+  "id": 1025,
+  "title": "testing123",
+  "description": "test",
+  "sku": "testing123",
+  "price": {
+    "cents": 200,
+    "currency": "USD",
+    "formatted": "$2",
+    "US": {
+      "cents": 200,
+      "currency": "USD",
+      "formatted": "$2"
+    }
+  },
+  "rental": null,
+  "trailer_url": null,
+  "trailer_embed_code": "<iframe src=\"http://embed.crystal.dev/packages/1025\" width=\"640\" height=\"360\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>",
   "thumbnail": {
-    "small": "https://cdn.vhx.tv/assets/thumbnails/default-small.png",
-    "medium": "https://cdn.vhx.tv/assets/thumbnails/default-medium.png",
-    "large": "https://cdn.vhx.tv/assets/thumbnails/default-large.png",
+    "small": "http://cdn.crystal.dev/assets/thumbnails/default-small.png",
+    "medium": "http://cdn.crystal.dev/assets/thumbnails/default-medium.png",
+    "large": "http://cdn.crystal.dev/assets/thumbnails/default-large.png",
     "blurred": null
   },
-  "is_active": true,
+  "is_active": false,
   "is_preorder": false,
-  "release_date": "2014-03-17",
-  "videos_count": 10,
+  "release_date": null,
+  "videos_count": 2,
   "extras_count": 0,
-  "created_at": "2014-02-25T20:19:30Z",
-  "updated_at": "2014-02-25T20:19:30Z"
+  "created_at": "2014-02-06T18:00:39Z",
+  "updated_at": "2015-02-18T16:21:15Z"
 }

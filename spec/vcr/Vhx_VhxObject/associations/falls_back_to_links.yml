@@ -1,0 +1,310 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.crystal.dev/sites/1900
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer d46501a84b0dac5e5063dcb4ee436c17c469a528c7f06885d02b0667622b5e51
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 05 May 2015 18:31:32 GMT
+      Status:
+      - 401 Unauthorized
+      Connection:
+      - close
+      Cache-Control:
+      - no-store
+      Surrogate-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Www-Authenticate:
+      - Bearer realm="VHX API", error="invalid_token", error_description="The access
+        token expired"
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      X-Ua-Compatible:
+      - IE=Edge
+      Set-Cookie:
+      - _session=BAh7CEkiD3Nlc3Npb25faWQGOgZFVEkiJWYwYjkzNWVlZjU3YWYyMzNmOGUyOGU1OTQ5MTg4N2I0BjsAVEkiGGN1cnJlbnRfYXBwbGljYXRpb24GOwBGSSIKc2FnYXIGOwBUSSIRY3VycmVudF91c2VyBjsARkkiEXNhZ2FyQHZoeC50dgY7AFQ%3D--51d7d9cfca63ca78d37bfedf4704e4e81e2e373c;
+        domain=.crystal.dev; path=/; expires=Thu, 05-May-2016 18:31:32 GMT; HttpOnly
+      X-Meta-Request-Version:
+      - 0.3.4
+      X-Request-Id:
+      - fe944ac8260d97f324f73aef31159626
+      X-Runtime:
+      - '0.070121'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "message": "Access token is invalid.",
+          "documentation_url": "http://dev.vhx.tv/docs/api"
+        }
+    http_version: 
+  recorded_at: Tue, 05 May 2015 18:31:32 GMT
+- request:
+    method: post
+    uri: http://api.crystal.dev/oauth/token
+    body:
+      encoding: UTF-8
+      string: client_id=34ac1dec21fc20afd5099a2e6e0e62745dead7acd20c7b87320d8e5a7c5a33cc&client_secret=6a04e2cf039db7ff57850f677fe0e419cdc132b3cc04aac9f3c2cd1c193a326d&grant_type=refresh_token&refresh_token=7aa1e03fe89796a2391381669ed847dc20211f2a262192d8404e743cf9ba57bf
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 05 May 2015 18:31:33 GMT
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"b52136a7fe77173b77569142701b4112"'
+      Set-Cookie:
+      - _session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJWVlMzQ3MGRhOThkN2I1M2UxOWJmMGQxODUyODg1MmUyBjsAVA%3D%3D--8a5b6e60225d262e572c0f44ef660fac3f7f976d;
+        domain=.crystal.dev; path=/; expires=Thu, 05-May-2016 18:31:33 GMT; HttpOnly
+      X-Meta-Request-Version:
+      - 0.3.4
+      X-Request-Id:
+      - b81f1c0a34ad840cbe38e82b514272d3
+      X-Runtime:
+      - '0.136317'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"cc7d6c93bde201968f077b73acd5ee11a2768cbcb9b43122eb294004bf5b4480","token_type":"bearer","expires_in":7200,"refresh_token":"3b9aacbeb03d05e7b901c35580bcc45e6e714cd4921d8bc8699342632f68bd63","scope":"public"}'
+    http_version: 
+  recorded_at: Tue, 05 May 2015 18:31:33 GMT
+- request:
+    method: get
+    uri: http://api.crystal.dev/sites/1900
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer cc7d6c93bde201968f077b73acd5ee11a2768cbcb9b43122eb294004bf5b4480
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 05 May 2015 18:31:34 GMT
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Cache-Control:
+      - public, no-cache, must-revalidate
+      Surrogate-Control:
+      - max-age=3600
+      Surrogate-Key:
+      - sites/1900
+      Etag:
+      - '"dbc97fff0882503fb7557be259e3d36f"'
+      Last-Modified:
+      - Mon, 04 May 2015 20:46:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Meta-Request-Version:
+      - 0.3.4
+      X-Request-Id:
+      - 72d2d917c80c12e82bc523c77f977a24
+      X-Runtime:
+      - '1.087962'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "_links": {
+            "self": {
+              "href": "http://api.crystal.dev/sites/1900"
+            },
+            "home_page": {
+              "href": "http://sagartestmovie.crystal.dev"
+            },
+            "followers": {
+              "href": "http://api.crystal.dev/sites/1900/followers"
+            }
+          },
+          "_embedded": {
+            "subscription": null,
+            "packages": [
+              {
+                "_links": {
+                  "self": {
+                    "href": "http://api.crystal.dev/packages/2780"
+                  },
+                  "site": {
+                    "href": "http://api.crystal.dev/sites/1900"
+                  },
+                  "videos": {
+                    "href": "http://api.crystal.dev/packages/2780/videos"
+                  },
+                  "buy_page": {
+                    "href": "http://sagartestmovie.crystal.dev/buy/pwyw-1"
+                  },
+                  "home_page": {
+                    "href": "http://sagartestmovie.crystal.dev/packages/pwyw-1"
+                  }
+                },
+                "_embedded": {
+                  "trailer": null
+                },
+                "id": 2780,
+                "title": "pwyw",
+                "description": "",
+                "sku": "pwyw-1",
+                "price": {
+                  "cents": 500,
+                  "currency": "USD",
+                  "formatted": "$5",
+                  "US": {
+                    "cents": 500,
+                    "currency": "USD",
+                    "formatted": "$5"
+                  }
+                },
+                "rental": null,
+                "trailer_url": null,
+                "trailer_embed_code": "<iframe src=\"http://embed.crystal.dev/packages/2780\" width=\"640\" height=\"360\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>",
+                "thumbnail": {
+                  "small": "http://cdn.crystal.dev/assets/thumbnails/default-small.png",
+                  "medium": "http://cdn.crystal.dev/assets/thumbnails/default-medium.png",
+                  "large": "http://cdn.crystal.dev/assets/thumbnails/default-large.png",
+                  "blurred": null
+                },
+                "is_active": true,
+                "is_preorder": false,
+                "release_date": null,
+                "videos_count": 0,
+                "extras_count": 0,
+                "created_at": "2014-07-15T18:15:36Z",
+                "updated_at": "2014-08-26T14:48:52Z"
+              },
+              {
+                "_links": {
+                  "self": {
+                    "href": "http://api.crystal.dev/packages/7381"
+                  },
+                  "site": {
+                    "href": "http://api.crystal.dev/sites/1900"
+                  },
+                  "videos": {
+                    "href": "http://api.crystal.dev/packages/7381/videos"
+                  },
+                  "buy_page": {
+                    "href": "http://sagartestmovie.crystal.dev/buy/test-package-2"
+                  },
+                  "home_page": {
+                    "href": "http://sagartestmovie.crystal.dev/packages/test-package-2"
+                  }
+                },
+                "_embedded": {
+                  "trailer": null
+                },
+                "id": 7381,
+                "title": "test package",
+                "description": "test description",
+                "sku": "test-package-2",
+                "price": {
+                  "cents": 1000,
+                  "currency": "USD",
+                  "formatted": "$10",
+                  "US": {
+                    "cents": 1000,
+                    "currency": "USD",
+                    "formatted": "$10"
+                  }
+                },
+                "rental": null,
+                "trailer_url": null,
+                "trailer_embed_code": "<iframe src=\"http://embed.crystal.dev/packages/7381\" width=\"640\" height=\"360\" frameborder=\"0\" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>",
+                "thumbnail": {
+                  "small": "http://cdn.crystal.dev/assets/thumbnails/default-small.png",
+                  "medium": "http://cdn.crystal.dev/assets/thumbnails/default-medium.png",
+                  "large": "http://cdn.crystal.dev/assets/thumbnails/default-large.png",
+                  "blurred": null
+                },
+                "is_active": true,
+                "is_preorder": false,
+                "release_date": null,
+                "videos_count": 0,
+                "extras_count": 0,
+                "created_at": "2015-05-04T19:15:09Z",
+                "updated_at": "2015-05-04T19:15:09Z"
+              }
+            ]
+          },
+          "id": 1900,
+          "title": "SagarTestMovie",
+          "description": "This is my test movie. ",
+          "domain": "sagartestmovie.crystal.dev",
+          "subdomain": "sagartestmovie",
+          "key": "sagartestmovie",
+          "color": "#28DBF7",
+          "facebook_url": null,
+          "twitter_name": null,
+          "google_analytics_id": "",
+          "packages_count": 2,
+          "videos_count": 4,
+          "followers_count": 31,
+          "created_at": "2013-12-27T00:20:28Z",
+          "updated_at": "2015-05-04T20:46:01Z"
+        }
+    http_version: 
+  recorded_at: Tue, 05 May 2015 18:31:34 GMT
+recorded_with: VCR 2.9.3
