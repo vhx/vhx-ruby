@@ -19,7 +19,11 @@ To obtain an api key, please visit [TBD, but Kevin's PR](https://github.com/vhx/
 
 ###Access Token (Application-User Authentication)
 
-To obtain an access token, you will need the [Oauth2 Gem](https://github.com/intridea/oauth2), a VHX client id, and VHX client secret. Once you have these credentials, instantiate a OAuth client:
+The easiest way to obtain access credentials for an 'application-user' authentication flow is by using the [VHX OmniAuth Strategy](https://github.com/vhx/omniauth-vhx).
+
+An alternative is to use the Oauth2 Gem directly, as described below:
+
+Docs for [Oauth2 Gem](https://github.com/intridea/oauth2). You will also need your VHX client id, and VHX client secret. Once you have these credentials, instantiate a OAuth client:
 
 ```ruby
 client_id     = '9ac56e0574439fd569fbb5a47986d6dffff01a790429cc2b46cbfdd5e47f59ee'
