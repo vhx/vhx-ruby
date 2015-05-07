@@ -1,10 +1,15 @@
+require_relative '../vhx_collection'
+
 module Vhx
   module ApiOperations
     module List
       module ClassMethods
-        def all(resource)
-          response_json = Vhx.connection.get(resource).body
-          response_json.map{ |obj| self.new(obj) }
+        def all(payload)
+          response = Vhx.connection.get do |req|
+            req.url '/' + get_klass.downcase + 's'
+            req.body = payload
+          end
+          VhxCollection.new(response.body, get_klass.downcase + 's')
         end
       end
 
