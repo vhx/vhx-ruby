@@ -3,6 +3,7 @@ module Vhx
     attr_reader :client_id, :client_secret, :api_base_url, :oauth_token, :api_key, :connection
 
     def initialize(credentials = {})
+      credentials    = Hash[credentials.map{ |k, v| [k.to_sym, v] }]
       @api_base_url  = 'http://api.crystal.dev'
       @client_id     = credentials[:client_id]
       @client_secret = credentials[:client_secret]

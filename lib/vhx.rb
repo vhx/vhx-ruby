@@ -29,7 +29,14 @@ require "vhx/objects/video"
 module Vhx
   class << self
     def setup(credentials = {})
+      credentials[:client_id]     ||= @client_id
+      credentials[:client_secret] ||= @client_secret
       Vhx.client = Vhx::Client.new(credentials)
+    end
+
+    def config(config = {})
+      @client_id     = config[:client_id]
+      @client_secret = config[:client_secret]
     end
 
     def client
