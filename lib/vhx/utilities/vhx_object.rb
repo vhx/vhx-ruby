@@ -11,6 +11,10 @@ module Vhx
       create_associations(obj_hash)
     end
 
+    def to_json
+      @obj_hash.to_json
+    end
+
   protected
     def validate_class(obj_hash)
       unless obj_hash['_links']['self']['href'].match(self.class.to_s.split("::").last.downcase)
