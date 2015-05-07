@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.date           = '2015-01-29'
   spec.description    = 'A Ruby wrapper for the Vhx developer API.'
   spec.summary        = 'A Ruby wrapper for the Vhx developer API.'
-  spec.email          = 'sagar@vhx.tv'
+  spec.email          = ['sagar@vhx.tv']
   spec.homepage       = 'http://dev.vhx.tv/docs/api/'
   spec.license        = 'MIT'
 
@@ -19,6 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths  = ['lib']
 
   # Gems that must be intalled
-  spec.add_dependency "faraday"
-  spec.add_dependency "multi_json"
+  spec.add_dependency 'faraday', '~> 0.9.1'
+  spec.add_dependency 'faraday_middleware', '~> 0.9.1'
+
+  spec.add_dependency 'vcr', '~> 2.9.3'
+
 end
