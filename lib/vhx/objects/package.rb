@@ -9,7 +9,7 @@ module Vhx
         req.body = { video: get_hypermedia(identifier, 'Video') }
       end
 
-      self
+      return Vhx::Package.find(self.id)
     end
 
     def remove_video(identifier)
@@ -18,7 +18,7 @@ module Vhx
         req.body = { video: get_hypermedia(identifier, 'Video') }
       end
 
-      self
+      return Vhx::Package.find(self.id)
     end
 
   end

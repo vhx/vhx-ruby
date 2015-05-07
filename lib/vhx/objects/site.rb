@@ -15,7 +15,7 @@ module Vhx
         req.body = body
       end
 
-      self
+      Vhx::Site.find(self.id)
     end
 
     def remove_follower
@@ -23,7 +23,7 @@ module Vhx
         req.url('/sites/' + self.id.to_s + '/followers')
       end
 
-      self
+      Vhx::Site.find(self.id)
     end
 
   end
