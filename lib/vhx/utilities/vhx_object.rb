@@ -1,6 +1,7 @@
 module Vhx
   class VhxObject
     include HelperMethods
+    ASSOCIATION_WHITELIST = ['packages', 'sites', 'site', 'videos']
 
     def initialize(obj_hash)
       @obj_hash = obj_hash
@@ -26,7 +27,7 @@ module Vhx
     end
 
     def create_associations(obj_hash)
-      ['packages', 'sites'].each do |association_method| # Need to fix gaps in API ['_links']
+      (obj_hash['_links'].keys.select!{|k| ASSOCIATION_WHITELIST.include?(k)}).each do |association_method|
         instance_variable_set("@#{association_method}", nil)
         self.class.send(:define_method, association_method) do
 
