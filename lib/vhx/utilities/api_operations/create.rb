@@ -5,7 +5,7 @@ module Vhx
         def create(payload)
           klass = get_klass
           response = Vhx.connection.post do |req|
-            req.url('/' + klass.downcase.pluralize) #This url is based purely on VHX's API convention.
+            req.url('/' + klass.downcase + 's') #This url is based purely on VHX's API convention.
             req.body = payload
           end
 

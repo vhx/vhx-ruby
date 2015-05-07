@@ -1,5 +1,3 @@
-require 'active_support/core_ext/string/inflections'
-
 module Vhx
   class VhxObject
     include HelperMethods
@@ -66,7 +64,7 @@ module Vhx
         return VhxCollection.new(association_obj, association_method)
       end
 
-      Object.const_get("Vhx::#{association_method.singularize.capitalize}").new(association_obj)
+      Object.const_get("Vhx::#{association_method.gsub(/s\z/, '').capitalize}").new(association_obj)
     end
   end
 end

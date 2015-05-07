@@ -11,7 +11,7 @@ module Vhx
     def get_hypermedia(identifier, klass = nil)
       if identifier.class.to_s.match(/Integer|Fixnum/)
         klass ||= get_klass
-        return '/' + klass.downcase.pluralize + '/' + identifier.to_s #This url is based purely on VHX's API convention (not nested).
+        return '/' + klass.downcase + 's' + '/' + identifier.to_s #This url is based purely on VHX's API convention (not nested).
       end
 
       identifier
