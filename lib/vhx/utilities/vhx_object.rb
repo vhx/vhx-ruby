@@ -7,7 +7,7 @@ module Vhx
       @obj_hash = obj_hash
 
       validate_class(obj_hash)
-      create_accessors(obj_hash)
+      create_readers(obj_hash)
       create_associations(obj_hash)
     end
 
@@ -22,16 +22,17 @@ module Vhx
       end
     end
 
-    def create_accessors(obj_hash)
+    def create_readers(obj_hash)
       obj_hash.keys.each do |key|
         next if key.match(/embedded|links/)
-        self.class.send(:attr_accessor, key)
+        self.class.send(:attr_reader, key)
         instance_variable_set("@#{key}", obj_hash[key])
       end
     end
 
     def create_associations(obj_hash)
-      (obj_hash['_links'].keys.select!{|k| ASSOCIATION_WHITELIST.include?(k)}).each do |association_method|
+      associations = (obj_hash.fetch('_links', {}).keys | obj_hash.fetch('_embedded', {}).keys).select!{|k| ASSOCIATION_WHITELIST.include?(k)}
+      associations.each do |association_method|
         instance_variable_set("@#{association_method}", nil)
         self.class.send(:define_method, association_method) do
 
