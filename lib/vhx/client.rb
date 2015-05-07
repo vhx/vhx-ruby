@@ -7,7 +7,7 @@ module Vhx
       @api_base_url  = 'http://api.crystal.dev'
       @client_id     = credentials[:client_id]
       @client_secret = credentials[:client_secret]
-      @oauth_token   = credentials[:oauth_token] ? OAuthToken.new(credentials[:oauth_token], refreshed = false) : nil
+      @oauth_token   = credentials[:api_key] ? nil : OAuthToken.new(credentials, refreshed = false)
       @api_key       = credentials[:api_key]
       @headers       = {}
 
