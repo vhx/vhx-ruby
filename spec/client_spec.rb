@@ -52,10 +52,10 @@ describe Vhx::Client, :vcr do
       end
     end
 
-    describe '#refresh_access_token' do
+    describe '#refresh_access_token!' do
       subject(:oauth_token){ vhx_client.oauth_token }
       let!(:original_access_token){ oauth_token.access_token }
-      before { vhx_client.refresh_access_token }
+      before { vhx_client.refresh_access_token! }
 
       it 'oauth_token refreshed' do
         expect(vhx_client.oauth_token.refreshed).to eq(true)

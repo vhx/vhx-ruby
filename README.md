@@ -50,6 +50,40 @@ expires_at    = token.expires_at
 expires_in    = token.expires_in
 ```
 
+####Important consideration for refresh tokens when using Application-User authentication.
+
+By default, the vhx gem will automatically refresh your credentials if they have expired. Because credentials will change once refreshed, you will need to store these new credentials so that you do not receive an Unauthorized error the next time you create a client instance. One way to accomplish this is the following:
+
+```ruby
+vhx = Vhx.setup(current_user.credentials)
+begin
+  @packages = Vhx::User.me.packages
+ensure
+  current_user.credentials = vhx.client.credentials
+  current_user.save
+end
+```
+
+Alternatively, you can disable auto-refresh and instead manage the process by checking if the token has expired. To disable auto-refresh, pass in the following option when calling either `#config` or `#setup` on `Vhx`:
+
+`Vhx.config(client_id: ENV['VHX_CLIENT_ID'], client_secret: ENV['VHX_CLIENT_SECRET'], skip_auto_refresh: true)`
+
+OR
+
+`Vhx.setup(credentials.merge(skip_auto_refresh: true))`
+
+Now, you will have to manage refreshing the token manually like the following:
+
+```ruby
+if Vhx.client.expired?
+  Vhx.client.refresh_access_token!
+  current_user.credentials = vhx.client.credentials
+  current_user.save
+end
+
+@packages = Vhx::User.me.packages
+```
+
 ###Make your first request
 
 Now that you have either an api key or access_token you are ready to make your first request!
@@ -58,12 +92,10 @@ Now that you have either an api key or access_token you are ready to make your f
 credentials = {
   client_id: client_id,
   client_secret: client_secret,
-  oauth_token: {
-    access_token: access_token,
-    refresh_token: refresh,
-    expires_at: expires_at,
-    expires_in: expires_in
-  }
+  access_token: access_token,
+  refresh_token: refresh,
+  expires_at: expires_at,
+  expires_in: expires_in
 }
 ```
 

@@ -7,7 +7,7 @@ module Vhx
         begin
           @app.call(env)
         rescue InvalidTokenError
-          @vhx_client.refresh_access_token
+          @vhx_client.refresh_access_token!
           orig_env[:request_headers].merge!(@vhx_client.configured_headers)
           @app.call(orig_env)
         end
