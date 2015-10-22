@@ -1,7 +1,7 @@
 class OAuthToken < Struct.new(:token, :refresh_token, :expires_at, :expires_in, :expires, :refreshed)
   def initialize(params = {}, refreshed = false)
     params             = Hash[params.map{ |k, v| [k.to_sym, v] }]
-    self.token         = params[:token]
+    self.token         = params[:access_token]
     self.refresh_token = params[:refresh_token]
     self.expires_at    = params[:expires_at] || Time.now.to_i + params[:expires_in].to_i
     self.expires_in    = params[:expires_in]
