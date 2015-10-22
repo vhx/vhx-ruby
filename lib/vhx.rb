@@ -25,6 +25,8 @@ require "vhx/objects/site"
 require "vhx/objects/file"
 require "vhx/objects/ticket"
 require "vhx/objects/video"
+require "vhx/objects/customer"
+require "vhx/objects/subscription"
 
 module Vhx
   class << self
