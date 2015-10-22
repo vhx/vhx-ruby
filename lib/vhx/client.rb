@@ -4,7 +4,7 @@ module Vhx
 
     def initialize(options = {})
       options            = Hash[options.map{ |k, v| [k.to_sym, v] }]
-      @api_base_url      = 'http://api.crystal.dev'
+      @api_base_url      = 'https://api.vhx.tv' || options[:api_base]
       @client_id         = options[:client_id]
       @client_secret     = options[:client_secret]
       @oauth_token       = options[:api_key] ? nil : OAuthToken.new(options, refreshed = false)
