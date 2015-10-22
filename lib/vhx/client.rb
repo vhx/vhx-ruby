@@ -4,7 +4,7 @@ module Vhx
 
     def initialize(options = {})
       options            = Hash[options.map{ |k, v| [k.to_sym, v] }]
-      @api_base_url      = 'https://api.vhx.tv' || options[:api_base]
+      @api_base_url      = options[:api_base] || 'https://api.vhx.tv'
       @client_id         = options[:client_id]
       @client_secret     = options[:client_secret]
       @oauth_token       = options[:api_key] ? nil : OAuthToken.new(options, refreshed = false)
@@ -45,7 +45,7 @@ module Vhx
         return nil
       end
 
-      oauth_token.token
+      oauth_token.access_token
     end
 
     def expired?
