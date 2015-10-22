@@ -13,18 +13,15 @@ module Vhx
     end
 
     def selling_packages
-      if @selling_packages.present?
-        return @selling_packages
-      end
+      return @selling_packages if @selling_packages
 
       @selling_packages = []
-
       @obj_hash['_embedded']['sites'].each do |site|
-        site = Vhx.connection.get(site['_links']['self']['href'])
-        @selling_packages << site['_embedded']['packages']
+        site = Vhx.connection.get(site['_links']['self']['href']).body
+        @selling_packages += site['_embedded']['packages']
       end
 
-      build_association(@selling_packages, 'packages')
+      @selling_packages = build_association(@selling_packages, 'packages')
     end
 
   end
