@@ -15,6 +15,14 @@ module Vhx
       @obj_hash.to_json
     end
 
+    def to_hash
+      @obj_hash
+    end
+
+    def href
+      @obj_hash['_links']['self']['href']
+    end
+
   protected
     def validate_class(obj_hash)
       unless obj_hash['_links']['self']['href'].match(self.class.to_s.split("::").last.downcase)
