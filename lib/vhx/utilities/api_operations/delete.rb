@@ -1,14 +1,15 @@
 module Vhx
   module ApiOperations
     module Delete
-      module InstanceMethods
-        def delete(identifier)
-          Vhx.connection.delete(get_hypermedia(identifier))
+      module ClassMethods
+        def delete(identifier, payload = {})
+          Vhx.connection.delete(get_hypermedia(identifier), payload)
         end
       end
 
       def self.included(klass)
-        klass.include(InstanceMethods)
+        klass.extend(Vhx::HelperMethods)
+        klass.extend(ClassMethods)
       end
     end
   end
