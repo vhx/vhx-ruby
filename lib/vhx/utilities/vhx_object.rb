@@ -31,7 +31,7 @@ module Vhx
     end
 
     def create_associations(obj_hash)
-      associations = (obj_hash.fetch('_links', {}).keys | obj_hash.fetch('_embedded', {}).keys).select!{|k| ASSOCIATION_WHITELIST.include?(k)}
+      associations = (obj_hash.fetch('_links', {}).fetch('_embedded', {}).keys).select!{|k| ASSOCIATION_WHITELIST.include?(k)}
       associations.each do |association_method|
         instance_variable_set("@#{association_method}", nil)
         self.class.send(:define_method, association_method) do
@@ -40,11 +40,7 @@ module Vhx
             return instance_variable_get("@#{association_method}")
           end
 
-          if obj_hash['_embedded'] && obj_hash['_embedded'].fetch(association_method, []).length > 0
-            return instance_variable_set("@#{association_method}", fetch_embedded_association(obj_hash, association_method))
-          end
-
-          if obj_hash['_links'] && obj_hash['_links'].fetch(association_method, []).length > 0
+          if obj_hash['_links']['_embedded'] && obj_hash['_links']['_embedded'].fetch(association_method, []).length > 0
             return instance_variable_set("@#{association_method}", fetch_linked_association(obj_hash, association_method))
           end
 
@@ -59,7 +55,7 @@ module Vhx
     end
 
     def fetch_linked_association(obj_hash, association_method)
-      hypermedia = obj_hash['_links'][association_method]['href']
+      hypermedia = obj_hash['_links']['_embedded'][association_method]['href']
       response_json = Vhx.connection.get(hypermedia).body
       build_association(response_json, association_method)
     end
