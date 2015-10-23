@@ -23,6 +23,14 @@ module Vhx
       @obj_hash['_links']['self']['href']
     end
 
+    def links
+      data = {}
+      @obj_hash['_links'].each do |k, v|
+        data[k] = v['href']
+      end
+      return OpenStruct.new(data)
+    end
+
   protected
     def validate_class(obj_hash)
       unless obj_hash['_links']['self']['href'].match(self.class.to_s.split("::").last.downcase)
