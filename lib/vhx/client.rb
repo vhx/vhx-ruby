@@ -1,6 +1,6 @@
 module Vhx
   class Client
-    attr_reader :client_id, :client_secret, :api_base_url, :oauth_token, :api_key, :connection
+    attr_reader :client_id, :client_secret, :api_base_url, :oauth_token, :api_key, :connection, :ssl
 
     def initialize(options = {})
       options            = Hash[options.map{ |k, v| [k.to_sym, v] }]
@@ -10,13 +10,14 @@ module Vhx
       @oauth_token       = options[:api_key] ? nil : OAuthToken.new(options, refreshed = false)
       @api_key           = options[:api_key]
       @skip_auto_refresh = options[:skip_auto_refresh]
+      @ssl               = options[:ssl] || {}
       @headers           = {}
 
       configure_connection
     end
 
     def configure_connection
-      @connection = Faraday::Connection.new(url: api_base_url, headers: configured_headers) do |faraday|
+      @connection = Faraday::Connection.new(url: api_base_url, headers: configured_headers, ssl: ssl) do |faraday|
         faraday.request  :url_encoded
         faraday.request  :json
         faraday.response :logger
