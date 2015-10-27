@@ -144,7 +144,7 @@ user.sites
 
 These association calls will default to fetching from embedded resources attached to the calling object. If the requested resources are not available, the gem will proceed to make a call to the Vhx Api to fetch those resources. Once resources are pulled the first time, they are cached; so all future calls to your object's association will not make additional requests.
 
-You can also request individual or a collection of objects using the `#find` and `#all` methods, respectively, which are available to all resources.
+You can also request individual or a list of objects using the `#find` and `#all` methods, respectively, which are available to all resources.
 
 Create Vhx Objects using the Vhx-Ruby Gem by using the `#create` method on any resources that allow `POST` requests. For example, here's creating a package to sell for your site:
 

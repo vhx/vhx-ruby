@@ -81,9 +81,9 @@ module Vhx
     end
 
     def build_association(association_obj, association_method)
-      # Support for legacy arrays, and new collection objects starting with Video resource
+      # Support for legacy arrays, and new list objects starting with Video resource
       if association_obj.is_a?(Array) || association_obj.has_key?('total')
-        return VhxCollection.new(association_obj, association_method)
+        return VhxListObject.new(association_obj, association_method)
       end
 
       Object.const_get("Vhx::#{association_method.gsub(/s\z/, '').capitalize}").new(association_obj)

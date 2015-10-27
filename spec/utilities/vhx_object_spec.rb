@@ -39,8 +39,8 @@ describe Vhx::VhxObject, :vcr do
     end
 
     describe 'has_many' do
-      it 'returns VhxCollection object' do
-        expect(vhx_object_with_embedded.videos).to be_instance_of Vhx::VhxCollection
+      it 'returns VhxListObject object' do
+        expect(vhx_object_with_embedded.videos).to be_instance_of Vhx::VhxListObject
       end
     end
 

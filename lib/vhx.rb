@@ -17,7 +17,7 @@ require "vhx/utilities/api_operations/list"
 require "vhx/utilities/api_operations/request"
 
 require "vhx/utilities/vhx_object"
-require "vhx/utilities/vhx_collection"
+require "vhx/utilities/vhx_list_object"
 
 require "vhx/objects/user"
 require "vhx/objects/package"

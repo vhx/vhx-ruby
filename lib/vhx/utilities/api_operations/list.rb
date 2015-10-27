@@ -1,4 +1,4 @@
-require_relative '../vhx_collection'
+require_relative '../vhx_list_object'
 
 module Vhx
   module ApiOperations
@@ -9,7 +9,7 @@ module Vhx
             req.url '/' + get_klass.downcase + 's'
             req.body = payload
           end
-          VhxCollection.new(response.body, get_klass.downcase + 's')
+          VhxListObject.new(response.body, get_klass.downcase + 's')
         end
       end
 
