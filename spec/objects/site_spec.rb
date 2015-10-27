@@ -25,32 +25,6 @@ describe Vhx::Site, :vcr do
     end
   end
 
-  describe '#add_follower' do
-    context 'with email address' do
-      it 'returns site object' do
-        expect(vhx_site.add_follower('foo@bar.foobar')).to be_instance_of(Vhx::Site)
-      end
-    end
-
-    context 'with id' do
-      it 'returns site object' do
-        expect(vhx_site.add_follower(1)).to be_instance_of(Vhx::Site)
-      end
-    end
-
-    context 'with hypermedia' do
-      it 'returns site object' do
-        expect(vhx_site.add_follower('http://api.crystal.dev/users/1')).to be_instance_of(Vhx::Site)
-      end
-    end
-  end
-
-  describe '#remove_follower' do
-    it 'returns site object' do
-      expect(vhx_site.remove_follower).to be_instance_of(Vhx::Site)
-    end
-  end
-
   describe 'attributes' do
     it 'are present' do
       expect(vhx_site.id).to_not be_nil
@@ -61,7 +35,6 @@ describe Vhx::Site, :vcr do
   describe 'associations' do
     it 'are present' do
       expect{vhx_site.packages}.to_not raise_error(NoMethodError)
-      expect{vhx_site.followers}.to_not raise_error(NoMethodError)
     end
 
     it 'errors if not present' do
