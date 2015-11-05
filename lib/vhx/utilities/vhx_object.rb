@@ -1,7 +1,7 @@
 module Vhx
   class VhxObject
     include HelperMethods
-    ASSOCIATION_WHITELIST = ['packages', 'sites', 'site', 'videos']
+    ASSOCIATION_WHITELIST = ['packages', 'sites', 'site', 'videos', 'video', 'subscription']
 
     def initialize(obj_hash)
       @obj_hash = obj_hash
