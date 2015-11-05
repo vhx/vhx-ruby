@@ -18,7 +18,9 @@ module Vhx
       @selling_packages = []
       @obj_hash['_embedded']['sites'].each do |site|
         site = Vhx.connection.get(site['_links']['self']['href']).body
-        @selling_packages += site['_embedded']['packages']
+        unless site['_embedded']['packages'].nil?
+          @selling_packages += site['_embedded']['packages']
+        end
       end
 
       @selling_packages = build_association(@selling_packages, 'packages')
@@ -30,7 +32,9 @@ module Vhx
       @selling_subscriptions = []
       @obj_hash['_embedded']['sites'].each do |site|
         site = Vhx.connection.get(site['_links']['self']['href']).body
-        @selling_subscriptions += site['_embedded']['subscription']
+        unless site['_embedded']['subscription'].nil?
+          @selling_subscriptions += site['_embedded']['subscription']
+        end
       end
 
       @selling_subscriptions = build_association(@selling_subscriptions, 'subscriptions')
