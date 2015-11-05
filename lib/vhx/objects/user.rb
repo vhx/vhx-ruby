@@ -33,7 +33,7 @@ module Vhx
       @obj_hash['_embedded']['sites'].each do |site|
         site = Vhx.connection.get(site['_links']['self']['href']).body
         unless site['_embedded']['subscription'].nil?
-          @selling_subscriptions += site['_embedded']['subscription']
+          @selling_subscriptions << site['_embedded']['subscription']
         end
       end
 
