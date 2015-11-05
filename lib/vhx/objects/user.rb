@@ -24,5 +24,17 @@ module Vhx
       @selling_packages = build_association(@selling_packages, 'packages')
     end
 
+    def selling_subscriptions
+      return @selling_subscriptions if @selling_subscriptions
+
+      @selling_subscriptions = []
+      @obj_hash['_embedded']['sites'].each do |site|
+        site = Vhx.connection.get(site['_links']['self']['href']).body
+        @selling_subscriptions += site['_embedded']['subscription']
+      end
+
+      @selling_subscriptions = build_association(@selling_subscriptions, 'subscriptions')
+    end
+
   end
 end
