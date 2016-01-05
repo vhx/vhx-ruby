@@ -1,6 +1,5 @@
 module Vhx
-  class Video < VhxObject
-    include Vhx::ApiOperations::Create
+  class Collection < VhxObject
     include Vhx::ApiOperations::Request
     include Vhx::ApiOperations::List
   end

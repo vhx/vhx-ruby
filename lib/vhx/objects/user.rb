@@ -7,11 +7,6 @@ module Vhx
       self.new(response_json)
     end
 
-    def update(options)
-      options = {id: self.id}.merge(options)
-      Vhx.connection.put('/settings', options)
-    end
-
     def selling_packages
       return @selling_packages if @selling_packages
 
