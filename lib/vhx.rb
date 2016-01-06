@@ -22,11 +22,11 @@ require "vhx/utilities/vhx_list_object"
 
 require "vhx/objects/user"
 require "vhx/objects/collection"
-require "vhx/objects/item"
+require "vhx/objects/collection_item"
 require "vhx/objects/product"
 require "vhx/objects/site"
-require "vhx/objects/file"
 require "vhx/objects/video"
+require "vhx/objects/video_file"
 require "vhx/objects/customer"
 require "vhx/objects/authorization"
 

@@ -36,11 +36,15 @@ module Vhx
       return nil unless obj_hash['_links'].fetch('self', nil)
 
       href  = obj_hash['_links']['self']['href']
-      klass = self.class.to_s.split("::").last.downcase
+      klass = self.class.to_s.split("::")
+      klass.shift #strip out Vhx
+      klass = klass.join("_").downcase
 
       is_valid_match = case klass
-      when 'item'
+      when 'collection_item'
         href.match('video|file|collection')
+      when 'video_file'
+        href.match('file')
       else
         href.match(klass)
       end
@@ -53,27 +57,22 @@ module Vhx
     def create_readers(obj_hash)
       obj_hash.keys.each do |key|
         next if key.match(/embedded|links/)
-        self.class.send(:attr_reader, key)
-        instance_variable_set("@#{key}", obj_hash[key])
+        self.class.send(:define_method, key) do
+          return obj_hash[key]
+        end
       end
     end
 
     def create_associations(obj_hash)
       associations = (obj_hash.fetch('_links', {}).keys | obj_hash.fetch('_embedded', {}).keys).select{|k| ASSOCIATION_WHITELIST.include?(k)}
       associations.each do |association_method|
-        instance_variable_set("@#{association_method}", nil)
-        self.class.send(:define_method, association_method) do
-
-          if instance_variable_get("@#{association_method}")
-            return instance_variable_get("@#{association_method}")
-          end
-
-          if obj_hash['_embedded'] && obj_hash['_embedded'].fetch(association_method, []).length > 0
-            return instance_variable_set("@#{association_method}", fetch_embedded_association(obj_hash, association_method))
+        self.class.send(:define_method, association_method) do |payload = {}|
+          if payload.empty? && obj_hash['_embedded'] && obj_hash['_embedded'].fetch(association_method, []).length > 0
+            return fetch_embedded_association(obj_hash, association_method)
           end
 
           if obj_hash['_links'] && obj_hash['_links'].fetch(association_method, []).length > 0
-            return instance_variable_set("@#{association_method}", fetch_linked_association(obj_hash, association_method))
+            return fetch_linked_association(obj_hash, association_method, payload)
           end
 
           raise InvalidResourceError.new 'Association does not exist'
@@ -86,10 +85,13 @@ module Vhx
       build_association(association_obj, association_method)
     end
 
-    def fetch_linked_association(obj_hash, association_method)
-      hypermedia = obj_hash['_links'][association_method]['href']
-      response_json = Vhx.connection.get(hypermedia).body
-      build_association(response_json, association_method)
+    def fetch_linked_association(obj_hash, association_method, payload = {})
+      response = Vhx.connection.get do |req|
+        req.url(obj_hash['_links'][association_method]['href'].gsub(Vhx.client.api_base_url, ""))
+        req.body = payload
+      end
+
+      build_association(response.body, association_method)
     end
 
     def build_association(association_obj, association_method)
