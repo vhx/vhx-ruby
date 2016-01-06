@@ -2,8 +2,8 @@ module Vhx
   module ApiOperations
     module Update
       module InstanceMethods
-        def update(identifier, payload)
-          Vhx.connection.put(get_hypermedia(identifier), payload)
+        def update(payload)
+          Vhx.connection.put(self.href, payload)
         end
       end
 

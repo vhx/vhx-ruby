@@ -1,7 +1,7 @@
 module Vhx
   class VhxObject
     include HelperMethods
-    ASSOCIATION_WHITELIST = ['products', 'sites', 'site', 'videos', 'video', 'subscription']
+    ASSOCIATION_WHITELIST = ['products', 'sites', 'site', 'videos', 'video', 'subscription', 'files', 'items', 'customer']
 
     def initialize(obj_hash)
       @obj_hash = obj_hash
@@ -33,7 +33,19 @@ module Vhx
 
   protected
     def validate_class(obj_hash)
-      unless obj_hash['_links']['self']['href'].match(self.class.to_s.split("::").last.downcase)
+      return nil unless obj_hash['_links'].fetch('self', nil)
+
+      href  = obj_hash['_links']['self']['href']
+      klass = self.class.to_s.split("::").last.downcase
+
+      is_valid_match = case klass
+      when 'item'
+        href.match('video|file|collection')
+      else
+        href.match(klass)
+      end
+
+      unless is_valid_match
         raise InvalidResourceError.new 'The resource returned from the API does not match the resource requested'
       end
     end
@@ -47,7 +59,7 @@ module Vhx
     end
 
     def create_associations(obj_hash)
-      associations = (obj_hash.fetch('_links', {}).keys | obj_hash.fetch('_embedded', {}).keys).select!{|k| ASSOCIATION_WHITELIST.include?(k)}
+      associations = (obj_hash.fetch('_links', {}).keys | obj_hash.fetch('_embedded', {}).keys).select{|k| ASSOCIATION_WHITELIST.include?(k)}
       associations.each do |association_method|
         instance_variable_set("@#{association_method}", nil)
         self.class.send(:define_method, association_method) do

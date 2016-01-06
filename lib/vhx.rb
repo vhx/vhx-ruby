@@ -15,19 +15,20 @@ require "vhx/utilities/api_operations/create"
 require "vhx/utilities/api_operations/delete"
 require "vhx/utilities/api_operations/list"
 require "vhx/utilities/api_operations/request"
+require "vhx/utilities/api_operations/update"
 
 require "vhx/utilities/vhx_object"
 require "vhx/utilities/vhx_list_object"
 
 require "vhx/objects/user"
 require "vhx/objects/collection"
-require "vhx/objects/collection_item"
+require "vhx/objects/item"
 require "vhx/objects/product"
 require "vhx/objects/site"
 require "vhx/objects/file"
 require "vhx/objects/video"
 require "vhx/objects/customer"
-require "vhx/objects/subscription"
+require "vhx/objects/authorization"
 
 module Vhx
   class << self

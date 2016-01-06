@@ -4,7 +4,7 @@ module Vhx
   module ApiOperations
     module List
       module ClassMethods
-        def all(payload)
+        def all(payload = {})
           response = Vhx.connection.get do |req|
             req.url '/' + get_klass.downcase + 's'
             req.body = payload
