@@ -57,9 +57,8 @@ module Vhx
     def create_readers(obj_hash)
       obj_hash.keys.each do |key|
         next if key.match(/embedded|links/)
-        self.class.send(:define_method, key) do
-          return obj_hash[key]
-        end
+        self.class.send(:attr_reader, key)
+        instance_variable_set("@#{key}", obj_hash[key])
       end
     end
 
@@ -68,11 +67,11 @@ module Vhx
       associations.each do |association_method|
         self.class.send(:define_method, association_method) do |payload = {}|
           if payload.empty? && obj_hash['_embedded'] && obj_hash['_embedded'].fetch(association_method, []).length > 0
-            return fetch_embedded_association(obj_hash, association_method)
+            return instance_variable_set("@#{association_method}", fetch_embedded_association(obj_hash, association_method))
           end
 
           if obj_hash['_links'] && obj_hash['_links'].fetch(association_method, []).length > 0
-            return fetch_linked_association(obj_hash, association_method, payload)
+            return instance_variable_set("@#{association_method}", fetch_linked_association(obj_hash, association_method, payload))
           end
 
           raise InvalidResourceError.new 'Association does not exist'
