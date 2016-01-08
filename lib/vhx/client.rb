@@ -4,7 +4,7 @@ module Vhx
 
     def initialize(options = {})
       options            = Hash[options.map{ |k, v| [k.to_sym, v] }]
-      @api_base_url      = options[:api_base] || 'https://api.vhx.tv'
+      @api_base_url      = options[:api_base] || API_BASE_URL
       @client_id         = options[:client_id]
       @client_secret     = options[:client_secret]
       @oauth_token       = options[:api_key] ? nil : OAuthToken.new(options, refreshed = false)
