@@ -8,6 +8,10 @@ module Vhx
           response = Vhx.connection.get('/' + get_klass.downcase + 's', payload)
           VhxListObject.new(response.body, get_klass.downcase + 's')
         end
+
+        def list(payload = {})
+          self.all(payload)
+        end
       end
 
       def self.included(klass)

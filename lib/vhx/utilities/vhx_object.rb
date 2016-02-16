@@ -31,6 +31,10 @@ module Vhx
       return OpenStruct.new(data)
     end
 
+    def _links
+      JSON.parse(@obj_hash['_links'].to_json, object_class: OpenStruct)
+    end
+
   protected
     def validate_class(obj_hash)
       return nil unless obj_hash['_links'].fetch('self', nil)

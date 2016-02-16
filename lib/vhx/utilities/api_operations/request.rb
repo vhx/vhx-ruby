@@ -6,6 +6,10 @@ module Vhx
           response = Vhx.connection.get(get_hypermedia(identifier))
           self.new(response.body)
         end
+
+        def retrieve(identifier)
+          self.find(identifier)
+        end
       end
 
       def self.included(klass)
