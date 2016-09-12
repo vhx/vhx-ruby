@@ -1,7 +1,7 @@
 module Vhx
   class VhxObject
     include HelperMethods
-    ASSOCIATION_WHITELIST = ['products', 'sites', 'site', 'videos', 'video', 'subscription', 'files', 'items', 'customer']
+    ASSOCIATION_WHITELIST = ['products', 'sites', 'site', 'videos', 'video', 'subscription', 'items', 'customer']
 
     def initialize(obj_hash)
       @obj_hash = obj_hash
@@ -32,10 +32,15 @@ module Vhx
     end
 
     def _links
-      JSON.parse(@obj_hash['_links'].to_json, object_class: OpenStruct)
+      JSON.parse(@obj_hash['_links'].to_json)
+    end
+
+    def _embedded
+      JSON.parse(@obj_hash['_embedded'].to_json)
     end
 
   protected
+
     def validate_class(obj_hash)
       return nil unless obj_hash['_links'].fetch('self', nil)
 
@@ -90,8 +95,7 @@ module Vhx
 
     def fetch_linked_association(obj_hash, association_method, payload = {})
       response = Vhx.connection.get do |req|
-        req.url(obj_hash['_links'][association_method]['href'].gsub(Vhx.client.api_base_url, ""))
-        req.body = payload
+        req.url(obj_hash['_links'][association_method]['href'].gsub(Vhx.client.api_base_url, "") + '?' + URI.encode_www_form(payload))
       end
 
       build_association(response.body, association_method)
