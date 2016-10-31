@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Vhx::Analytics do
-  describe ".report" do
+  describe ".get" do
     it "retrieves statistics from the /analytics endpoint" do
       Vhx.setup(test_credentials)
       payload = {
@@ -24,7 +24,7 @@ describe Vhx::Analytics do
       }
       stub_analytics(query_params: query_params, response: payload)
 
-      analytics = Vhx::Analytics.report(query_params)
+      analytics = Vhx::Analytics.get(query_params)
 
       expect(analytics.to).to eq(payload.fetch("to"))
       expect(analytics.from).to eq(payload.fetch("from"))

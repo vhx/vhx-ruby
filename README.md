@@ -58,5 +58,4 @@ collections
   * [`list`](http://dev.vhx.tv/docs/api?ruby#list_collections)
   * [`items`](http://dev.vhx.tv/docs/api?ruby#list_collection_items)
 
-analytics
-  * [`report`](http://dev.vhx.tv/docs/api/?ruby#analytics)
+[`analytics`](http://dev.vhx.tv/docs/api/?ruby#analytics)
