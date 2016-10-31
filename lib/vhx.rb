@@ -29,6 +29,7 @@ require "vhx/objects/video"
 require "vhx/objects/video_file"
 require "vhx/objects/customer"
 require "vhx/objects/authorization"
+require "vhx/objects/analytics"
 
 module Vhx
   API_BASE_URL = 'https://api.vhx.tv'

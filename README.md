@@ -19,7 +19,7 @@ Before requesting your first resource, you must setup an instance of the Vhx Cli
 vhx = Vhx.setup({ api_key: 'your VHX API key'} )
 ```
 
-Here's an example of creating a Vhx resource with payload options. You can handle errors by rescuing Vhx::VhxError. 
+Here's an example of creating a Vhx resource with payload options. You can handle errors by rescuing Vhx::VhxError.
 
 ```ruby
 begin
@@ -57,3 +57,5 @@ collections
   * [`retrieve`](http://dev.vhx.tv/docs/api?ruby#retrieve_collection)
   * [`list`](http://dev.vhx.tv/docs/api?ruby#list_collections)
   * [`items`](http://dev.vhx.tv/docs/api?ruby#list_collection_items)
+
+[`analytics`](http://dev.vhx.tv/docs/api/?ruby#analytics)
