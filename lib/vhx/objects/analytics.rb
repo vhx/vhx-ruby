@@ -1,6 +1,6 @@
 module Vhx
   class Analytics < VhxObject
-    def self.get(query_params = {})
+    def self.report(query_params = {})
       response = Vhx.connection.get("/analytics", query_params)
 
       self.new(response.body)
