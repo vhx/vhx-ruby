@@ -1,0 +1,28 @@
+{
+  "_links": {
+    "self":  { "href": "https://api.vhx.tv/customers?page=1&query=term" },
+    "first": { "href": "https://api.vhx.tv/customers?query=term" },
+    "prev":  { "href": null },
+    "next":  { "href": "https://api.vhx.tv/customers?page=2&query=term" },
+    "last":  { "href": "https://api.vhx.tv/customers?page=5&query=term" }
+  },
+  "count": 100,
+  "total": 500,
+  "_embedded": {
+    "customers": [
+      {
+        "_links": {
+          "self":  { "href": "https://api.vhx.tv/customers/1" },
+          "watchlist": { "href": "https://api.vhx.tv/customers/1/watchlist" },
+          "watching": { "href": "https://api.vhx.tv/customers/1/watching" }
+        },
+        "_embedded": {},
+        "id": 1,
+        "name": "First Last",
+        "email": "customer@email.com",
+        "created_at": "2014-02-25T20:19:30Z",
+        "updated_at": "2014-02-25T20:19:30Z"
+      }
+    ]
+  }
+}

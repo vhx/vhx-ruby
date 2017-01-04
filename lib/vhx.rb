@@ -39,7 +39,7 @@ module Vhx
       options[:client_secret]     ||= @client_secret
       options[:api_key]           ||= @api_key
       options[:api_base]          ||= @api_base_url
-      options[:skip_auto_refresh]   = @skip_auto_refresh if options[:skip_auto_refresh].nil?
+      options[:auto_refresh]        = @auto_refresh || false 
       Vhx.client = Vhx::Client.new(options)
     end
 
@@ -47,7 +47,7 @@ module Vhx
       @client_id          = config[:client_id]
       @client_secret      = config[:client_secret]
       @api_key            = config[:api_key]
-      @skip_auto_refresh  = config[:skip_auto_refresh] || false
+      @auto_refresh       = config[:auto_refresh] || false
       @api_base_url       = config[:api_base]
     end
 

@@ -7,9 +7,9 @@ module Vhx
       @api_base_url      = options[:api_base] || API_BASE_URL
       @client_id         = options[:client_id]
       @client_secret     = options[:client_secret]
-      @oauth_token       = options[:api_key] ? nil : OAuthToken.new(options, refreshed = false)
+      @oauth_token       = options[:api_key] ? nil : OAuthToken.new(options[:oauth_token], refreshed = false)
       @api_key           = options[:api_key]
-      @skip_auto_refresh = options[:skip_auto_refresh]
+      @auto_refresh      = options[:auto_refresh]
       @ssl               = options[:ssl] || {}
       @headers           = {}
 
@@ -21,7 +21,10 @@ module Vhx
         faraday.request  :url_encoded
         faraday.request  :json
         faraday.response :logger
-        faraday.use Vhx::Middleware::OAuth2, :vhx_client => self unless @skip_auto_refresh
+
+        if @auto_refresh
+          faraday.use Vhx::Middleware::OAuth2, :vhx_client => self
+        end
 
         faraday.adapter Faraday.default_adapter
 

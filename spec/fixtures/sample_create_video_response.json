@@ -1,0 +1,33 @@
+{
+  "_links": {
+    "self":  { "href": "https://api.vhx.tv/videos/1" },
+    "files": { "href": "https://api.vhx.tv/videos/1/files" }
+  },
+  "_embedded": {
+    "files": []
+  },
+  "id": 1,
+  "title": "My Video",
+  "description": "My video description.",
+  "status": "processing",
+  "duration": {
+    "seconds": 7200,
+    "formatted": "02:00:00"
+  },
+  "thumbnail": {
+    "small": "https://cdn.vhx.tv/assets/thumbnails/default-small.png",
+    "medium": "https://cdn.vhx.tv/assets/thumbnails/default-medium.png",
+    "large": "https://cdn.vhx.tv/assets/thumbnails/default-large.png",
+    "source": "https://cdn.vhx.tv/assets/thumbnails/original.jpg"
+  },
+  "tracks": {
+    "subtitles": []
+  },
+  "advertising": {},
+  "metadata": {
+    "advertising_keywords": []
+  },
+  "files_count": 0,
+  "created_at": "2014-02-25T20:19:30Z",
+  "updated_at": "2014-02-25T20:19:30Z"
+}

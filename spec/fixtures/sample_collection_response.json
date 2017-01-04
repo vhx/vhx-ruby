@@ -1,0 +1,20 @@
+{
+  "_links": {
+    "self":  { "href": "https://api.vhx.tv/collections/1" },
+    "items": { "href": "https://api.vhx.tv/collections/1/items" }
+  },
+  "id": 1,
+  "name": "Comedy",
+  "description": "Comedy series and movies.",
+  "slug": "comedy",
+  "thumbnail": {
+    "small": "https://cdn.vhx.tv/assets/thumbnails/default-small.png",
+    "medium": "https://cdn.vhx.tv/assets/thumbnails/default-medium.png",
+    "large": "https://cdn.vhx.tv/assets/thumbnails/default-large.png",
+    "source": "https://cdn.vhx.tv/assets/thumbnails/original.jpg"
+  },
+  "type": "category",
+  "items_count": 10,
+  "created_at": "2014-02-25T20:19:30Z",
+  "updated_at": "2014-02-25T20:19:30Z"
+}
