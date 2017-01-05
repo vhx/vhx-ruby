@@ -3,7 +3,7 @@ require "spec_helper"
 describe Vhx::Analytics do
   describe ".report" do
     it "retrieves statistics from the /analytics endpoint" do
-      Vhx.setup(test_credentials)
+      Vhx.setup(api_key: '-123131')
       payload = {
         "_links" => {
           "self" => { "href" => "/analytics" },
