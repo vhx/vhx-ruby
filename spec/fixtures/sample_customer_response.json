@@ -1,0 +1,16 @@
+{
+  "_links": {
+    "self":  { "href": "https://api.vhx.tv/customers/1" },
+    "watchlist": { "href": "https://api.vhx.tv/customers/1/watchlist" },
+    "watching": { "href": "https://api.vhx.tv/customers/1/watching" },
+    "products": { "href": "https://api.vhx.tv/products/1" }
+  },
+  "_embedded": {
+    "products": []
+  },
+  "id": 1,
+  "name": "First Last",
+  "email": "customer@email.com",
+  "created_at": "2014-02-25T20:19:30Z",
+  "updated_at": "2014-02-25T20:19:30Z"
+}

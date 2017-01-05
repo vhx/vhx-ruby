@@ -1,0 +1,14 @@
+{
+  "_links": {
+    "self":  { "href": "https://api.vhx.tv/products?page=1&query=term" },
+    "first": { "href": "https://api.vhx.tv/products?query=term" },
+    "prev":  { "href": null },
+    "next":  { "href": "https://api.vhx.tv/products?page=2&query=term" },
+    "last":  { "href": "https://api.vhx.tv/products?page=5&query=term" }
+  },
+  "count": 100,
+  "total": 500,
+  "_embedded": {
+    "products": []
+  }
+}

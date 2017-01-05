@@ -1,36 +1,80 @@
 require 'spec_helper'
 
-describe Vhx::Video, :vcr do
-  let(:sample_video_response){ JSON.parse(File.read("spec/fixtures/sample_video_response.json")) }
-  let(:vhx_video){Vhx::Video.new(sample_video_response)}
+describe Vhx::Video do
 
-  before {
-    Vhx.setup(test_credentials)
+  def video_response
+    JSON.parse(File.read("spec/fixtures/sample_video_response.json"))
+  end
+
+  def videos_response
+    JSON.parse(File.read("spec/fixtures/sample_videos_response.json"))
+  end
+
+  before{
+    Vhx.setup({api_key: 'testapikey'})
   }
+  
+  describe 'api operations' do
 
-  describe '::create' do
-    it 'returns video object' do
-      attributes = {title: 'gem test video', description: 'this video is for gem testing', site: 'http://api.crystal.dev/sites/1900'}
-      expect(Vhx::Video.create(attributes)).to be_instance_of(Vhx::Video)
+    describe '::find' do
+      it 'does not error' do
+        Vhx.connection.stub(:get).and_return(OpenStruct.new(body: video_response))
+        expect{Vhx::Video.find(123)}.to_not raise_error 
+      end
+    end 
+
+    describe '::retrieve' do
+      it 'does not error' do
+        Vhx.connection.stub(:get).and_return(OpenStruct.new(body: video_response))
+        expect{Vhx::Video.retrieve(123)}.to_not raise_error 
+      end
+    end
+
+    describe '::list' do
+      it 'does not error' do
+        Vhx.connection.stub(:get).and_return(OpenStruct.new(body: videos_response))
+        expect{Vhx::Video.list()}.to_not raise_error 
+      end
+    end
+
+    describe '::all' do
+      it 'does not error' do
+        Vhx.connection.stub(:get).and_return(OpenStruct.new(body: videos_response))
+        expect{Vhx::Video.all()}.to_not raise_error 
+      end
+    end
+
+    describe '::create' do
+      it 'raises error' do
+        Vhx.connection.stub(:post).and_return(OpenStruct.new(body: videos_response))
+        expect{Vhx::Video.create({})}.to_not raise_error
+      end
+    end
+
+    describe '#udpate' do
+      it 'raises error' do
+        expect{Vhx::Video.new({}).update}.to raise_error(NoMethodError)
+      end
+    end
+
+    describe '::delete' do
+      it 'raises error' do
+        expect{Vhx::Video.delete(1)}.to raise_error(NoMethodError)
+      end
+    end
+
+    describe '#files' do
+
+      def files_response
+        JSON.parse(File.read("spec/fixtures/sample_files_response.json"))
+      end
+      
+      it 'fetches linked association' do
+        Vhx.connection.stub(:get).and_return(OpenStruct.new(body: files_response))
+        files = Vhx::Video.new(video_response).files
+        expect(files.first.class).to eq(Vhx::Video::File) 
+        expect(Vhx.connection).to have_received(:get)
+      end
     end
   end
-
-  describe 'attributes' do
-    it 'are present' do
-      expect(vhx_video.id).to_not be_nil
-      expect(vhx_video.title).to_not be_nil
-    end
-  end
-
-  describe 'associations' do
-    it 'are present' do
-      expect{vhx_video.files}.to_not raise_error(NoMethodError)
-      expect{vhx_video.site}.to_not raise_error(NoMethodError)
-    end
-
-    it 'errors if not present' do
-      expect{vhx_video.videos}.to raise_error(NoMethodError)
-    end
-  end
-
 end

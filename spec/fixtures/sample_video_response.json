@@ -1,35 +1,24 @@
 {
   "_links": {
-    "self":  { "href": "http://api.crystal.dev/videos/1" },
-    "site":  { "href": "http://api.crystal.dev/sites/1" },
-    "files": { "href": "http://api.crystal.dev/videos/1/files" }
+    "self":  { "href": "https://api.vhx.tv/videos/1" },
+    "files": { "href": "https://api.vhx.tv/videos/1/files" }
   },
   "_embedded": {
-    "site": {},
-    "subtitles": [{
-      "_links": {
-        "self":  { "href": "http://cdn.crystal.dev/assets/spanish.srt" },
-        "video": { "href": "http://api.crystal.dev/videos/1" },
-        "site":  { "href": "http://api.crystal.dev/sites/1" }
-      },
-      "language": "Spanish",
-      "type": "srt"
-    }],
-    "files": [{
-      "_links": {
-        "self":  { "href": "http://api.crystal.dev/videos/1/files?quality=adaptive&format=m3u8" },
-        "video": { "href": "http://api.crystal.dev/videos/1" },
-        "site":  { "href": "http://api.crystal.dev/sites/1" }
-      },
-      "quality": "adaptive",
-      "format": "m3u8",
-      "method": "hls",
-      "size": {
-        "bytes": 1073741824,
-        "formatted": "1 GB"
-      },
-      "mime_type": "application/x-mpegURL"
-    }]
+    "files": [
+      {
+        "_links": {
+          "self":  { "href": "https://api.vhx.tv/videos/1/files?quality=adaptive&format=m3u8" }
+        },
+        "quality": "adaptive",
+        "format": "m3u8",
+        "method": "hls",
+        "size": {
+          "bytes": 1073741824,
+          "formatted": "1 GB"
+        },
+        "mime_type": "application/x-mpegURL"
+      }
+    ]
   },
   "id": 1,
   "title": "My Video",
@@ -42,9 +31,36 @@
   "thumbnail": {
     "small": "https://cdn.vhx.tv/assets/thumbnails/default-small.png",
     "medium": "https://cdn.vhx.tv/assets/thumbnails/default-medium.png",
-    "large": "https://cdn.vhx.tv/assets/thumbnails/default-large.png"
+    "large": "https://cdn.vhx.tv/assets/thumbnails/default-large.png",
+    "source": "https://cdn.vhx.tv/assets/thumbnails/original.jpg"
   },
-  "subtitles_count": 3,
+  "tracks": {
+    "subtitles": [
+      {
+        "_links": {
+            "srt": { "href": "https://cdn.vhx.tv/file.srt" },
+            "vtt": { "href": "https://cdn.vhx.tv/file.vtt" }
+        },
+        "label": "English",
+        "srclang": "en",
+        "kind": "subtitles"
+      }
+    ]
+  },
+  "advertising": {
+    "_links": {
+      "tag": { "href": "https://static.vhx.tv/vmap.xml" }
+    },
+    "client": "vmap",
+    "provider": "dfp"
+  },
+  "metadata": {
+    "series_name": "Series Name",
+    "season_name": "Season 1",
+    "season_number": 1,
+    "episode_number": 5,
+    "advertising_keywords": []
+  },
   "files_count": 5,
   "created_at": "2014-02-25T20:19:30Z",
   "updated_at": "2014-02-25T20:19:30Z"

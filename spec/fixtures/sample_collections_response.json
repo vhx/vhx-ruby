@@ -1,0 +1,14 @@
+{
+  "_links": {
+    "self":  { "href": "https://api.vhx.tv/collections?page=1&product=:href" },
+    "first": { "href": "https://api.vhx.tv/collections?product=:href" },
+    "prev":  { "href": null },
+    "next":  { "href": "https://api.vhx.tv/collections?page=2&product=:href" },
+    "last":  { "href": "https://api.vhx.tv/collections?page=5&product=:href" }
+  },
+  "count": 100,
+  "total": 500,
+  "_embedded": {
+    "collections": []
+  }
+}

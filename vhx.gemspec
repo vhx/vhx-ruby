@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   # Gems that must be intalled
   spec.add_dependency 'faraday', '~> 0.9.1'
   spec.add_dependency 'faraday_middleware', '~> 0.9.1'
+  spec.add_dependency 'rake'
 
-  spec.add_dependency 'vcr', '~> 2.9.3'
-
+  spec.add_development_dependency 'rspec'
 end

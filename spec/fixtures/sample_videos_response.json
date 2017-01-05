@@ -1,0 +1,14 @@
+{
+  "_links": {
+    "self":  { "href": "https://api.vhx.tv/videos?page=1&query=term" },
+    "first": { "href": "https://api.vhx.tv/videos?query=term" },
+    "prev":  { "href": null },
+    "next":  { "href": "https://api.vhx.tv/videos?page=2&query=term" },
+    "last":  { "href": "https://api.vhx.tv/videos?page=5&query=term" }
+  },
+  "count": 100,
+  "total": 500,
+  "_embedded": {
+    "videos": []
+  }
+}
