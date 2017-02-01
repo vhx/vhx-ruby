@@ -53,7 +53,8 @@ describe Vhx::Video do
 
     describe '#udpate' do
       it 'raises error' do
-        expect{Vhx::Video.new({}).update}.to raise_error(NoMethodError)
+        Vhx.connection.stub(:put).and_return(OpenStruct.new(body: video_response))
+        expect{Vhx::Video.new(video_response).update({})}.to_not raise_error(NoMethodError)
       end
     end
 
