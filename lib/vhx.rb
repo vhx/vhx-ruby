@@ -36,20 +36,20 @@ module Vhx
 
   class << self
     def setup(options = {})
-      options[:client_id]         ||= @client_id
-      options[:client_secret]     ||= @client_secret
-      options[:api_key]           ||= @api_key
-      options[:api_base]          ||= @api_base_url
-      options[:auto_refresh]        = @auto_refresh || false 
+      options[:client_id]     ||= @client_id
+      options[:client_secret] ||= @client_secret
+      options[:api_key]       ||= @api_key
+      options[:api_base]      ||= @api_base_url
+      options[:auto_refresh]    = @auto_refresh || false
       Vhx.client = Vhx::Client.new(options)
     end
 
     def config(config = {})
-      @client_id          = config[:client_id]
-      @client_secret      = config[:client_secret]
-      @api_key            = config[:api_key]
-      @auto_refresh       = config[:auto_refresh] || false
-      @api_base_url       = config[:api_base]
+      @client_id     = config[:client_id]
+      @client_secret = config[:client_secret]
+      @api_key       = config[:api_key]
+      @auto_refresh  = config[:auto_refresh] || false
+      @api_base_url  = config[:api_base]
     end
 
     def client

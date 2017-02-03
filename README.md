@@ -6,6 +6,29 @@ The VHX API is currently Private Beta. You can request an API key by emailing ap
 
 `gem install vhx-ruby`
 
+#### Building Locally
+
+```shell
+$ gem build vhx.gemspec
+Successfully built RubyGem
+Name: vhx
+Version: 0.0.0
+File: vhx-0.0.0.gem
+
+$ gem install vhx-0.0.0.gem
+Successfully installed vhx-0.0.0
+1 gem installed
+
+$ irb
+irb(main)> require 'vhx'
+```
+
+#### Running Specs
+
+```shell
+rspec .
+```
+
 ### Documentation
 
 Documentation is available at http://dev.vhx.tv/docs/api/ruby.
@@ -16,7 +39,7 @@ Full API reference is available at http://dev.vhx.tv/docs/api?ruby.
 Before requesting your first resource, you must setup an instance of the Vhx Client:
 
 ```ruby
-vhx = Vhx.setup({ api_key: 'your VHX API key'} )
+vhx = Vhx.setup({ api_key: 'your VHX API key' })
 ```
 
 Here's an example of creating a Vhx resource with payload options. You can handle errors by rescuing Vhx::VhxError.
