@@ -5,10 +5,10 @@ require 'vhx/version'
 Gem::Specification.new do |spec|
   spec.name           = 'vhx-ruby'
   spec.version        = Vhx::VERSION
-  spec.authors        = ['Sagar Shah']
-  spec.date           = '2017-01-06'
-  spec.description    = 'A Ruby wrapper for the Vhx developer API.'
-  spec.summary        = 'A Ruby wrapper for the Vhx developer API.'
+  spec.authors        = ['Sagar Shah', 'Kevin Sheurs']
+  spec.date           = '2017-02-03'
+  spec.description    = 'A Ruby wrapper for the VHX developer API.'
+  spec.summary        = 'A Ruby wrapper for the VHX developer API.'
   spec.email          = ['sagar@vhx.tv', 'dev@vhx.tv', 'wontae@vhx.tv', 'charlie@vhx.tv', 'kevin@vhx.tv', 'scott@vhx.tv']
   spec.homepage       = 'http://dev.vhx.tv/docs/api/'
   spec.license        = 'MIT'

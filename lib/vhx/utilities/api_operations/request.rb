@@ -2,13 +2,17 @@ module Vhx
   module ApiOperations
     module Request
       module ClassMethods
-        def find(identifier)
-          response = Vhx.connection.get(get_hypermedia(identifier))
+        def find(identifier, payload = {}, headers = {})
+          response = Vhx.connection.get(
+            get_hypermedia(identifier),
+            payload,
+            headers,
+          )
           self.new(response.body)
         end
 
-        def retrieve(identifier)
-          self.find(identifier)
+        def retrieve(identifier, payload = {}, headers = {})
+          self.find(identifier, payload, headers)
         end
       end
 

@@ -2,8 +2,12 @@ module Vhx
   module ApiOperations
     module Delete
       module ClassMethods
-        def delete(identifier, payload = {})
-          Vhx.connection.delete(get_hypermedia(identifier), payload)
+        def delete(identifier, payload = {}, headers = {})
+          Vhx.connection.delete(
+            get_hypermedia(identifier),
+            payload,
+            headers,
+          )
         end
       end
 
