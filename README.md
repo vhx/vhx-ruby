@@ -29,6 +29,11 @@ irb(main)> require 'vhx'
 rspec .
 ```
 
+#### Publishing to RubyGems
+```shell
+gem push vhx-ruby-#.#.#.gem
+```
+
 ### Documentation
 
 Documentation is available at http://dev.vhx.tv/docs/api/ruby.
