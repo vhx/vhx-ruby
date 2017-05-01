@@ -75,12 +75,12 @@ module Vhx
       associations = (obj_hash.fetch('_links', {}).keys | obj_hash.fetch('_embedded', {}).keys).select{|k| ASSOCIATION_WHITELIST.include?(k)}
       associations.each do |association_method|
         self.class.send(:define_method, association_method) do |payload = {}|
-          if payload.empty? && obj_hash['_embedded'] && obj_hash['_embedded'].has_key?(association_method)
-            return instance_variable_set("@#{association_method}", fetch_embedded_association(obj_hash, association_method))
+          if payload.empty? && @obj_hash['_embedded'] && @obj_hash['_embedded'].has_key?(association_method)
+            return instance_variable_set("@#{association_method}", fetch_embedded_association(@obj_hash, association_method))
           end
 
-          if obj_hash['_links'] && obj_hash['_links'].has_key?(association_method)
-            return instance_variable_set("@#{association_method}", fetch_linked_association(obj_hash, association_method, payload))
+          if @obj_hash['_links'] && @obj_hash['_links'].has_key?(association_method)
+            return instance_variable_set("@#{association_method}", fetch_linked_association(@obj_hash, association_method, payload))
           end
 
           raise InvalidResourceError.new 'Association does not exist'
