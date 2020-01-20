@@ -26,10 +26,9 @@ module Vhx
           faraday.use Vhx::Middleware::OAuth2, :vhx_client => self
         end
 
-        faraday.adapter Faraday.default_adapter
-
         faraday.use Vhx::Middleware::ErrorResponse
         faraday.response :json
+        faraday.adapter Faraday.default_adapter
       end
       @connection
     end
