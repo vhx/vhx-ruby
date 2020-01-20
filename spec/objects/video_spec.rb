@@ -86,7 +86,7 @@ describe Vhx::Video do
     describe '#update' do
       it 'raises error' do
         Vhx.connection.stub(:put).and_return(OpenStruct.new(body: video_response))
-        expect{Vhx::Video.new(video_response).update({})}.to_not raise_error(NoMethodError)
+        expect{Vhx::Video.new(video_response).update({})}.not_to raise_error
       end
 
       it "supports headers" do
