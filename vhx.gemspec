@@ -5,8 +5,8 @@ require 'vhx/version'
 Gem::Specification.new do |spec|
   spec.name           = 'vhx-ruby'
   spec.version        = Vhx::VERSION
-  spec.date           = '2017-02-03'
   spec.authors        = ['Vimeo OTT Developers']
+  spec.date           = '2020-01-27'
   spec.description    = 'A Ruby wrapper for the VHX developer API.'
   spec.summary        = 'A Ruby wrapper for the VHX developer API.'
   spec.email          = ['dev@vhx.tv']
