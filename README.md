@@ -36,7 +36,6 @@ gem push vhx-ruby-#.#.#.gem
 
 ### Documentation
 
-Documentation is available at http://dev.vhx.tv/docs/api/ruby.
 Full API reference is available at http://dev.vhx.tv/docs/api?ruby.
 
 ## Getting Started
