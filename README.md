@@ -1,6 +1,6 @@
 # VHX Ruby API Client
 
-The VHX API is currently Private Beta. You can request an API key by emailing api@vhx.tv.
+The VHX API is currently Private Beta.
 
 ### Installation
 
